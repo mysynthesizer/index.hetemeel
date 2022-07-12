@@ -5,8 +5,12 @@ while (i < 10) {
   a[i] = prompt("Enter city");
   i += 1;
 }
+outText = "Я не знаю твой город";
 let enc = prompt("Enter native city");
-outText = a.includes(enc) ? "Я знаю твой город" : "Я не знаю твой город";
+while (i < 10) {
+  if(enc == a[i]) outText = "Я знаю твой город";
+  i ++;
+}
 console.log(outText);
 </pre>
 <button onclick='eval(pre.innerText); run.innerHTML = "run:<br />" + outText'> выполнить </button><br />
