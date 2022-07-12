@@ -1,17 +1,14 @@
 <pre id=pre style='background: #ccc; padding: 10px'>
 a = [];
 i = 0;
-city = "";
-
 while (i < 3) {
-
-a[i] = prompt("Enter city");
-i += 1;
+  a[i] = prompt("Enter city");
+  i += 1;
 }
 enc = prompt("Enter native city");
 outText = a.includes(enc) ? "Я знаю твой город" : "Я не знаю твой город";
 </pre>
-<pre id=run style='background: gold; padding: 10px; width: 100px; border-radius: 5px'>run:<br /></pre>
+<pre id=run style='background: gold; padding: 10px; width: 200px; border-radius: 5px'>run:<br /></pre>
 <script>
 eval(pre.innerText);
 run.innerHTML += outText;
