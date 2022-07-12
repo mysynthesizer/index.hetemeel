@@ -1,16 +1,16 @@
 <pre id=pre style='background: #ccc; padding: 10px'>
-let out = [];
-function getCommonElements(array1, array2) {
-   for(i = 0; i < 100; i++){
-      if(array1.includes(i) && array2.includes(i)) out.push(i);
-   }
-   return out;
+a = [];
+i = 0;
+city = "";
+
+while (i < 3) {
+
+a[i] = +prompt("Enter city");
+i += 1;
 }
-result = getCommonElements([24, 12, 27, 3], [12, 8, 3, 36, 27]);
-console.log(result);
 </pre>
 <pre id=run style='background: gold; padding: 10px; width: 100px; border-radius: 5px'>run:<br /></pre>
 <script>
 eval(pre.innerText);
-run.innerHTML += result;
+run.innerHTML += a;
 </script>
