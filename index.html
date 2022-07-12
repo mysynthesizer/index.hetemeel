@@ -8,5 +8,5 @@ while (i < 3) {
 let enc = prompt("Enter native city");
 outText = a.includes(enc) ? "Я знаю твой город" : "Я не знаю твой город";
 </textarea>
-<button onclick='eval(pre.innerText); run.innerHTML += outText'> выполнить </button><br />
+<button onclick='eval(pre.innerText); setTimeout(function(){run.innerHTML += outText}, 1000);'> выполнить </button><br />
 <pre id=run style='background: gold; padding: 10px; width: 200px; border-radius: 5px'>run:<br /></pre>
