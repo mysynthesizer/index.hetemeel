@@ -231,7 +231,6 @@ let array = [
 	["#0DC2FF", "#007DE8", "#0E5DFF", "#0C28EB", "#1600FF"],
 	['video1.mp4', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'MOVIE.mp4', 'video2.mp4', 'video3.mp4']
 ]
-let url = 'https://mysynthesizer.github.io/index.hetemeel/';
 let audio = new Audio();
 let song = document.querySelector('.song');
 let index = 0; // трек по умотчанию
@@ -251,7 +250,7 @@ function play_track(ind){
 	audio.src = url + array[3][ind];
 	audio.onloadedmetadata = function(){duration.innerText = formatingTime(this.duration)};
 	document.bgColor = array[4][ind];
-	video.src = array[5][ind].substring(0,4) == 'http' ? array[5][ind] : url + array[5][ind];
+	video.src = array[5][ind];
 } 
 function play_pause(e){
     if(audio.paused){
