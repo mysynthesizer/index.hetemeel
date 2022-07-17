@@ -272,7 +272,10 @@ function formatingTime(time){
 	return Math.floor(time / 60) + ':' + (s < 10 ? '0' + s : s);
 }
 audio.onended = function(){selecting_track(1)};
-song.oninput = function(){audio.currentTime = video.currentTime = this.value / 100 * audio.duration};
+song.oninput = function(){
+	audio.currentTime = this.value / 100 * audio.duration;
+	video.currentTime = audio.currentTime % video.duration;
+}
 song.value = 0;
 volume.value = 80;
 currentTime.innerText = formatingTime(audio.currentTime);
