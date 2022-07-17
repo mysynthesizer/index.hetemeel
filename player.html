@@ -12,7 +12,6 @@
     border-radius: 30px;
     margin-top: 40px;
     margin-bottom: 20px;
-
 }
 .cards>* {
     display: inline-block;
@@ -218,6 +217,7 @@
 		</div>
 	</div>
 </div>
+<video id=video width=100% heightt=100% loop muted></video>
 <script>
 let down=false;
 document.onpointerdown=_=>down=true;
@@ -228,15 +228,11 @@ let array = [
 	['трек-1', 'трек-2', 'трек-3', 'трек-4', 'трек-5'],
 	['исполнитель-1', 'исполнитель-2', 'исполнитель-3', 'исполнитель-4', 'исполнитель-5'],
 	['track1.mp3', 'track2.mp3', 'track3.mp3', 'track4.mp3', 'track5.mp3'],
-	["#0DC2FF", "#007DE8", "#0E5DFF", "#0C28EB", "#1600FF"]
-	
+	["#0DC2FF", "#007DE8", "#0E5DFF", "#0C28EB", "#1600FF"],
+	['video1.mp4', 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4', 'MOVIE.mp4', 'video2.mp4', 'video3.mp4']
 ]
-let url = '';
+let url = 'https://mysynthesizer.github.io/index.hetemeel/';
 let audio = new Audio();
-let video = new Video('video1.mp4');
-//video.controls = true;
-//video.style.width = video.style.height = '100%';
-//document.body.appendChild(video);
 let song = document.querySelector('.song');
 let index = 0; // трек по умотчанию
 function selecting_track(direction){
@@ -246,6 +242,7 @@ function selecting_track(direction){
 	play_track(index);
 	playPause.src = 'https://cdn.icon-icons.com/icons2/1132/PNG/512/1486348534-music-pause-stop-control-play_80459.png';
 	audio.play();
+	video.play();
 }
 function play_track(ind){
 	image.src = array[0][ind];
@@ -254,14 +251,16 @@ function play_track(ind){
 	audio.src = url + array[3][ind];
 	audio.onloadedmetadata = function(){duration.innerText = formatingTime(this.duration)};
 	document.bgColor = array[4][ind];
-//	document.style.background = 'url("'+array[0][ind]+'")';
-}
+	video.src = array[5][ind].substring(0,4) == 'http' ? array[5][ind] : url + array[5][ind];
+} 
 function play_pause(e){
     if(audio.paused){
         audio.play();
+		video.play();
         e.src = 'https://cdn.icon-icons.com/icons2/1132/PNG/512/1486348534-music-pause-stop-control-play_80459.png';
     }else{
         audio.pause();
+		video.pause();
         e.src = 'https://cdn.icon-icons.com/icons2/1132/PNG/512/1486348532-music-play-pause-control-go-arrow_80458.png';
     }
 }
@@ -274,7 +273,7 @@ function formatingTime(time){
 	return Math.floor(time / 60) + ':' + (s < 10 ? '0' + s : s);
 }
 audio.onended = function(){selecting_track(1)};
-song.oninput = function(){audio.currentTime = this.value / 100 * audio.duration};
+song.oninput = function(){audio.currentTime = video.currentTime = this.value / 100 * audio.duration};
 song.value = 0;
 volume.value = 80;
 currentTime.innerText = formatingTime(audio.currentTime);
