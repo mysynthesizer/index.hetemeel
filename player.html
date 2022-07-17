@@ -247,7 +247,7 @@ function play_track(ind){
 	image.src = array[0][ind];
 	document.querySelector('.track').innerText = array[1][ind];
 	document.querySelector('.artist').innerText = array[2][ind];
-	audio.src = url + array[3][ind];
+	audio.src = array[3][ind];
 	audio.onloadedmetadata = function(){duration.innerText = formatingTime(this.duration)};
 	document.bgColor = array[4][ind];
 	video.src = array[5][ind];
