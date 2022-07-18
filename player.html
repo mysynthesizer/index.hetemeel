@@ -287,6 +287,26 @@ song.value = 0;
 volume.value = 80;
 currentTime.innerText = formatingTime(audio.currentTime);
 play_track(index);
+	
+	
+	
+	
+	function saveUrlAsFile(url, fileName) {    
+    var link = document.createElement("a");    
+    link.setAttribute("href", url);
+    link.setAttribute("download", fileName);
+    link.click();
+}
+
+let images = [].slice.call(document.querySelectorAll('img'))
+let counter = 1
+
+images.map(el => saveUrlAsFile(el.src, counter++))
+	
+	
+	
+	
+	
 </script>
 </body>
 </html>
