@@ -1,0 +1,1 @@
+_.merge(window.translations, {"legacy-translations":{"srcLegacyJsPortfolioViewPopupJs1":"Произошла ошибка.<br> Повторите попытку позже."}}); 

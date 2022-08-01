@@ -1,0 +1,1 @@
+_.merge(window.translations, {"components/quick-faq/quick-faq-search":{"legacyTranslation1":"Задайте свой вопрос"},"components/quick-faq":{"legacyTranslation1":"Вопросы - Ответы","legacyTranslation2":"Результаты поиска по запросу","legacyTranslation3":"К сожалению, по этому запросу ничего не найдено. Сформируйте другой запрос.","legacyTranslation4":"Популярные статьи"}}); 

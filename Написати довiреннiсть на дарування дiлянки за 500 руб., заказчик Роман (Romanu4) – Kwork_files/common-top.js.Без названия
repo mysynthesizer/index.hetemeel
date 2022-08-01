@@ -1,0 +1,1 @@
+_.merge(window.translations, {"legacy-translations":{"srcLegacyJsCommonTopGlobalJs1":"Ошибка","srcLegacyJsCommonTopUtilsJs1":"руб."}}); 
