@@ -1,0 +1,75 @@
+rty
+<style>
+body{
+	background: black;
+}
+.y{
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background: white;
+}
+.n{
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background: #022;
+}
+</style>
+<button onclick='start()'> старт </button> 
+<button onclick='clearInterval(b)'> стоп </button>
+<script>
+let r=60,b;
+for(i=0;i<r;i++){
+	for(j=0;j<r;j++){
+		let kvadrat=document.createElement('div');
+		kvadrat.id=i+'&'+j;
+	//	kvadrat.name=j;
+		kvadrat.className='n';
+		kvadrat.style.top=45+i*5+'px';
+		kvadrat.style.left=j*5+'px';
+	//	kvadrat.title=kvadrat.id.replace('&',' ');
+		kvadrat.onpointerdown=function(){
+			this.className='y';
+		}
+	//	kvadrat.textContent='r';
+		document.body.append(kvadrat);
+	}
+}
+function start(){
+	b=setInterval(function(){
+		for(i=0;i<r;i++){
+			for(j=0;j<r;j++){
+
+//				i=9;
+//				j=7;
+				
+				if (document.getElementById(i+'&'+j).className == 'n'){
+					let n=0;
+					for(h=-1;h<2;h++){
+						for(l=-1;l<2;l++){
+	//					console.log(document.getElementById(i+h+'&'+(j+l)).className);
+							if (i+h>=0&&i+h<r&&j+l>=0&&j+l<r&&document.getElementById(i+h+'&'+(j+l)).className == 'y') n ++;
+	//	console.log(i+h+'&'+(j+l));
+						}
+					}
+	//				n --;
+					if (n == 3) document.getElementById(i+'&'+j).className = 'y';
+				}else{
+					let n=0;
+					for(h=-1;h<2;h++){
+						for(l=-1;l<2;l++){
+	//					console.log(document.getElementById(i+h+'&'+(j+l)).className);
+							if (i+h>=0&&i+h<r&&j+l>=0&&j+l<r&&document.getElementById(i+h+'&'+(j+l)).className == 'y') n ++;
+	//	console.log(i+h+'&'+(j+l));
+						}
+					}
+					n --;
+	//				console.log(n);
+					if (n < 2 || n > 3) document.getElementById(i+'&'+j).className = 'n';
+				}
+			}
+		}
+	}, 200);
+}
+</script>
