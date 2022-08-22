@@ -15,9 +15,23 @@ body{
 	height: 5px;
 	background: #022;
 }
+.info{
+	background: gold;
+	position: absolute;
+	top: 350px;
+	left: 20px;
+	width: 450px;
+	height: 100px;
+	font-family: arial;
+	padding: 15px;
+}
 </style>
 <button onclick='start()'> старт </button> 
 <button onclick='clearInterval(b)'> стоп </button>
+<div class=info>
+<h4>Игра "Жизнь"</h4>
+Сначала мышью нарисуйте начальную конфигурацию клеток, потом жмите на кнопку старт.
+</div>
 <script>
 let r=60,b;
 for(i=0;i<r;i++){
