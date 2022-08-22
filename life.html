@@ -1,8 +1,4 @@
-rty
 <style>
-body{
-	background: black;
-}
 .y{
 	position: absolute;
 	width: 5px;
@@ -15,75 +11,65 @@ body{
 	height: 5px;
 	background: #022;
 }
-.info{
-	background: gold;
-	position: absolute;
-	top: 350px;
-	left: 20px;
-	width: 450px;
-	height: 100px;
-	font-family: arial;
-	padding: 15px;
+button{
+	width: 100px;
 }
 </style>
+<div id=contayner></div>
 <button onclick='start()'> старт </button> 
-<button onclick='clearInterval(b)'> стоп </button>
-<div class=info>
-<h4>Игра "Жизнь"</h4>
-Сначала мышью нарисуйте начальную конфигурацию клеток, потом жмите на кнопку старт.
-</div>
+<button onclick='clearInterval(b); document.bgColor="black"'> стоп </button>
+<button onclick='myclear()'> очистить </button>
 <script>
-let r=60,b;
-for(i=0;i<r;i++){
-	for(j=0;j<r;j++){
-		let kvadrat=document.createElement('div');
-		kvadrat.id=i+'&'+j;
-	//	kvadrat.name=j;
-		kvadrat.className='n';
-		kvadrat.style.top=45+i*5+'px';
-		kvadrat.style.left=j*5+'px';
-	//	kvadrat.title=kvadrat.id.replace('&',' ');
-		kvadrat.onpointerdown=function(){
-			this.className='y';
+document.bgColor = 'black';
+let r = 70, pressed = false, b;
+for(i = 0; i < r; i ++){
+	for(j = 0; j < r; j ++){
+		let cell = document.createElement('span');
+		cell.id = i + '&' + j;
+		cell.className = 'n';
+		cell.style.top = 45 + i * 5 + 'px';
+		cell.style.left = 10 + j * 5 + 'px';
+		cell.onpointerdown = function(){
+			this.className = 'y';
 		}
-	//	kvadrat.textContent='r';
-		document.body.append(kvadrat);
+		cell.onpointermove = function(){
+			if(pressed == true) this.className = 'y';
+		}
+		contayner.append(cell);
 	}
 }
 function start(){
-	b=setInterval(function(){
-		for(i=0;i<r;i++){
-			for(j=0;j<r;j++){
-
-//				i=9;
-//				j=7;
-				
-				if (document.getElementById(i+'&'+j).className == 'n'){
-					let n=0;
-					for(h=-1;h<2;h++){
-						for(l=-1;l<2;l++){
-	//					console.log(document.getElementById(i+h+'&'+(j+l)).className);
-							if (i+h>=0&&i+h<r&&j+l>=0&&j+l<r&&document.getElementById(i+h+'&'+(j+l)).className == 'y') n ++;
-	//	console.log(i+h+'&'+(j+l));
-						}
-					}
-	//				n --;
-					if (n == 3) document.getElementById(i+'&'+j).className = 'y';
+	document.bgColor = "blue";
+	b = setInterval(function(){
+		for(i = 0; i < r; i ++){
+			for(j = 0; j < r; j ++){
+				let cell = document.getElementById(i + '&' + j);
+				if (cell.className == 'n'){
+					if (what() == 3) cell.className = 'y';
 				}else{
-					let n=0;
-					for(h=-1;h<2;h++){
-						for(l=-1;l<2;l++){
-	//					console.log(document.getElementById(i+h+'&'+(j+l)).className);
-							if (i+h>=0&&i+h<r&&j+l>=0&&j+l<r&&document.getElementById(i+h+'&'+(j+l)).className == 'y') n ++;
-	//	console.log(i+h+'&'+(j+l));
-						}
-					}
-					n --;
-	//				console.log(n);
-					if (n < 2 || n > 3) document.getElementById(i+'&'+j).className = 'n';
+					let n = what() - 1;
+					if (n < 2 || n > 3) cell.className = 'n';
 				}
 			}
 		}
-	}, 200);
+	}, 100);
 }
+function what(){
+	let n = 0;
+	for(h =- 1; h < 2; h ++){
+		for(l =- 1; l < 2; l ++){
+			if (i + h >= 0 && i + h < r && j + l >= 0 && j + l < r && document.getElementById(i + h + '&' + (j + l)).className == 'y') n ++;
+		}
+	}
+	return n;	
+}
+function myclear(){
+	for(i = 0; i < r; i ++){
+		for(j = 0; j < r; j ++){
+			document.getElementById(i + '&' + j).className = 'n';
+		}
+	}
+}
+document.onpointerdown = function(){pressed = true};
+document.onpointerup = function(){pressed = false};
 </script>
