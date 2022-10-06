@@ -1,0 +1,49 @@
+<html>
+<head><center>
+<title>Воспроизведение зашифрованного аудиофайла</title>
+<meta charset="utf-8" />
+<style>
+button{
+	width: 150px;
+}
+</style>
+</head>
+<body>
+<h3>Воспроизведение зашифрованного мп3-файла</h3>
+<audio id=audio src="http://opan.strana.de/encrypted-music/trewq.mp3" controls></audio><br /><br />
+<button id=decodebtn onclick='decode()' hidden>воспроизвести</button> 
+<button onclick="localStorage.setItem('key', ''); location.reload()"> ввести другой ключ </button><br />
+<pre id=state></pre>
+<script>
+let key = "";
+if(!localStorage.getItem('key')){
+	while(key == "") key = prompt('Введите ключ');
+	if(key != null){
+		localStorage.setItem('key', key);
+		decode();
+	}
+}else{decodebtn.hidden = false};
+var myWorker = new Worker("worker.js");
+function decode(){
+	let ind = 0;
+	b = setInterval(function(){
+		points = '.  , .. , ...'.split(', ')[ind];
+		ind = ind ++ < 2 ? ind : 0;
+		state.innerText = 'ждите, расшифровываю' + points;
+	}, 1000);
+	let xhr = new XMLHttpRequest();
+	xhr.open("get", "encrypted_sound.mp3");
+	xhr.responseType = "arraybuffer";
+	xhr.send();
+	xhr.onload = function(){myWorker.postMessage([new Uint8Array(xhr.response), localStorage.getItem('key')])};
+}
+myWorker.onmessage = function(e){
+	clearInterval(b);
+	state.innerText = 'готово!';
+	decodebtn.hidden = true;
+	audio.src = URL.createObjectURL(new Blob([new Uint8Array(e.data)]));
+	audio.play();
+}
+</script>
+</body>
+</html>
