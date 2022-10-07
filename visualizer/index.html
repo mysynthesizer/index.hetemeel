@@ -33,7 +33,7 @@ body{
 </center></body>
 <script>
 var audio = document.querySelector('audio');
-
+audio.currentTime = 12;
 audio.onplay = function(){
 	var audioCtx = new AudioContext();
 	var source   = audioCtx.createMediaElementSource(audio);
