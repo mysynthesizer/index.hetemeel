@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>визуализатор</title>
+<meta charset="utf-8" />
+<style>
+body{
+	background: #003;
+	font-family: arial;
+}
+#myCanvas{
+	border-width: 3px;
+	border-color: white;
+	border-radius: 15px;
+	border-style: solid;
+	box-shadow: 0 0 15px 15px #7e7;
+	animation: spin-counter 5s linear infinite;
+}
+@keyframes spin-counter {
+	from{
+		box-shadow: 0 0 5px 5px #7e7;
+		border-color: white;
+	}
+	to{
+		box-shadow: 0 0 15px 15px pink;
+		border-color: gold;
+	}
+}
+</style>
+</head>
+<body><center>
+<canvas id="myCanvas" width=1024 height=256 style="background:blue"></canvas><br /><br />
+<audio src='razminka.mp3' controls></audio>
+</center></body>
+<script>
+var audio = document.querySelector('audio');
+
+audio.onplay = function(){
+	var audioCtx = new AudioContext();
+	var source   = audioCtx.createMediaElementSource(audio);
+	var analyser = audioCtx.createAnalyser();
+    source.connect(analyser); // Подключаем анализатор к элементу audio
+    analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
+	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+	var canvas = document.getElementById('myCanvas');
+	var ctx = canvas.getContext('2d');
+	var counter = 0;
+	setInterval(function(){
+		analyser.getByteFrequencyData(frequencyData); // Записываем в массив данные уровней частот
+		ctx.fillStyle = "black"; // Задаём цвет фона
+		ctx.globalAlpha = 0.05; // Это для получения эффекта плавного погасания полос
+		ctx.fillRect (0, 0, canvas.width, canvas.height); // Полупрозрачно чистим экран
+		ctx.globalAlpha = 1;
+		ctx.strokeStyle = '#3f9';
+		ctx.beginPath();
+		ctx.moveTo(Math.floor(150 * Math.sin(counter / 1)), 255 - frequencyData[0]);
+		for(i = 1; i < 1024; i ++) ctx.lineTo(i + Math.floor(350 * Math.sin(i / 15)), 255 - frequencyData[i]);
+		ctx.stroke();
+		counter ++;
+	}, 20);
+}
+</script>
+</html>
