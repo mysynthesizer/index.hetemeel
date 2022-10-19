@@ -38,7 +38,7 @@ audio{
 </style>
 <div id=contayner></div>
 <button onclick='start()'> старт </button> 
-<button onclick='clearInterval(b); document.body.className = "stop"';> стоп </button>
+<button onclick='clearInterval(b); document.body.className = "stop";stop()'> стоп </button>
 <button onclick='myclear()'> очистить </button> 
 <div class=contayner>
 <font color=gold>Нарисовать </font><br /><br />
@@ -48,6 +48,7 @@ audio{
 </div>
 <audio id=au src='razminka.mp3' controls></audio><br />
 <script>
+let myinterval;
 document.bgColor = 'black';
 let au=document.getElementById('au');
 let r = 70, pressed = false, sx=ex=sy=ey=mode=n=0, b;
@@ -136,6 +137,19 @@ function start(){
  
 	
 }
+	
+	
+function stop(){
+        clearInterval(myinterval);
+        pt[1].frequency.value = 8000;
+        myinterval = setInterval(function(){
+            pt[1].frequency.value /= 1.05;
+            if (pt[1].frequency.value <= 500) clearInterval(myinterval);
+        }, 100);
+}
+	
+	
+	
 function what(){
 	let n = 0;
 	for(h =- 1; h < 2; h ++) for(l =- 1; l < 2; l ++) if (i + h >= 0 && i + h < r && j + l >= 0 && j + l < r && document.getElementById(i + h + '&' + (j + l)).className == 'y') n ++;
