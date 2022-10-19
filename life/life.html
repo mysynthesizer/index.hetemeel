@@ -1,0 +1,152 @@
+<style>
+.y{
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background: white;
+}
+.n{
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	background: #022;
+}
+button{
+	width: 110px;
+	cursor: pointer;
+	border-radius: 7px;
+}
+.contayner{
+//	background: red;
+	position:absolute;
+	left: 370px;
+	width: 100px;
+	text-align: center;
+}
+.start{
+	background: blue;
+	transition: 1s;
+}
+.stop{
+	background: black;
+	transition: 1s;
+}
+audio{
+	position: absolute;
+	top: 400px;
+}
+</style>
+<div id=contayner></div>
+<button onclick='start()'> старт </button> 
+<button onclick='clearInterval(b); document.body.className = "stop"';> стоп </button>
+<button onclick='myclear()'> очистить </button> 
+<div class=contayner>
+<font color=gold>Нарисовать </font><br /><br />
+<button id=mode0> кривую </button><br /><br />
+<button id=mode1> закрашенный прямоугольник </button><br /><br />
+<button id=mode2> пустой прямоугольник </button>
+</div>
+<audio id=au src='razminka.mp3' controls></audio><br />
+<script>
+document.bgColor = 'black';
+let au=document.getElementById('au');
+let r = 70, pressed = false, sx=ex=sy=ey=mode=n=0, b;
+for(i = 0; i < r; i ++){
+	for(j = 0; j < r; j ++){
+		let cell = document.createElement('span');
+		cell.id = i + '&' + j;
+		cell.className = 'n';
+		cell.style.top = 45 + i * 5 + 'px';
+		cell.style.left = 10 + j * 5 + 'px';
+		cell.onpointermove = function(){if (!mode && pressed) this.className = 'y'};
+		cell.onpointerdown = function(){
+			this.className = 'y';
+			sx=this.id.split('&')[0];
+			sy=this.id.split('&')[1];
+		}
+		cell.onpointerup = function(){
+			ex=this.id.split('&')[0];
+			ey=this.id.split('&')[1];
+			if(mode == 1){
+				for(yy = sy; yy <= ey; yy ++){
+					for(xx = sx; xx <= ex; xx ++){
+						document.getElementById(xx+'&'+yy).className = 'y';
+					}
+				}
+			}
+			if(mode == 2){
+				for(a=sx;a<=ex;a++)document.getElementById(a+'&'+sy).className = 'y';
+				for(a=sx;a<=ex;a++)document.getElementById(a+'&'+ey).className = 'y';
+				for(a=sy;a<=ey;a++)document.getElementById(sx+'&'+a).className = 'y';
+				for(a=sy;a<=ey;a++)document.getElementById(ex+'&'+a).className = 'y';
+			}
+		}
+		contayner.append(cell);
+	}
+}
+let mas = [];
+for(i = 0; i < r; i ++){
+	mas[i] = [];
+	for(j = 0; j < r; j ++) mas[i][j] = 0;
+}
+for(i = 0; i < 3; i ++){
+	document.getElementById('mode' + i).onclick = function(){
+		for(j = 0; j < 3; j ++){
+			document.getElementById('mode' + j).style.background = '#ccc';
+		}
+		this.style.background = 'violet';
+		mode = this.id.substring(4);
+	}
+}
+document.getElementById('mode0').style.background = 'violet';
+function start(){
+//	au.play();
+//	document.bgColor = "blue";
+	document.body.className = 'start';
+	b = setInterval(function(){
+		nn=0;
+		for(i = 0; i < r; i ++){
+			for(j = 0; j < r; j ++){
+				if (document.getElementById(i + '&' + j).className == 'n'){
+					if (what() == 3) mas[i][j]=1;
+				}else{
+					nn++;
+					let n = what() - 1;
+					if (n < 2 || n > 3) mas[i][j]=0;
+				}
+			}
+		}
+		for(i = 0; i < r; i ++) for(j = 0; j < r; j ++) document.getElementById(i + '&' + j).className = mas[i][j]?'y':'n';
+		if (!nn){
+			clearInterval(b);
+	//		document.bgColor="black";
+			document.body.className = 'stop';
+		}
+	}, 100);
+	
+	
+	
+	
+	    let a = new AudioContext();
+        pt = [a.createMediaElementSource(au), a.createBiquadFilter(), a.destination];
+        pt[1].frequency.value = 18000;
+        pt[1].Q.value = 15;
+        pt[1].type = "lowpass";
+        for (let i = 0; i < 2; i ++) pt[i].connect(pt[i + 1]);
+ 
+	
+}
+function what(){
+	let n = 0;
+	for(h =- 1; h < 2; h ++) for(l =- 1; l < 2; l ++) if (i + h >= 0 && i + h < r && j + l >= 0 && j + l < r && document.getElementById(i + h + '&' + (j + l)).className == 'y') n ++;
+	return n;	
+}
+function myclear(){
+	for(i = 0; i < r; i ++) for(j = 0; j < r; j ++) document.getElementById(i + '&' + j).className = 'n';
+	for(i = 0; i < r; i ++){
+		for(j = 0; j < r; j ++) mas[i][j] = 0;
+	}
+}
+document.onpointerdown = function(){pressed = true};
+document.onpointerup = function(){pressed = false};
+</script>
