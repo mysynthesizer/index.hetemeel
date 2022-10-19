@@ -129,7 +129,7 @@ function start(){
 	
 	let a = new AudioContext();
         pt = [a.createMediaElementSource(au), a.createBiquadFilter(), a.destination];
-        pt[1].frequency.value = 8000;
+        pt[1].frequency.value = 3000;
         pt[1].Q.value = 15;
         pt[1].type = "lowpass";
         for (let i = 0; i < 2; i ++) pt[i].connect(pt[i + 1]);
