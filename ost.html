@@ -1,0 +1,80 @@
+rty
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Осциллограф</title>
+</head>
+<body><center><h1>Осциллограф</h1>
+<canvas id=canvas width=512 height=256 style="border-style:solid;border-width:5px;border-color:green;border-radius:15px"></canvas>
+<br><br>Частота развёртки: <input id=speed type=range max=12 value=8 style="width:250px;cursor:pointer" onchange="rangechange(this.value)">
+<span id=myspeed>rty</span>
+</body></html>
+<script>
+function rangechange(e){ // Что происходит при переключении движка
+    st=0;
+    k=speed.max-e;
+    k1=k-4;
+    if(k1<0){k1=0};
+    k5=Math.pow(2,k1);
+    if(k>4){myspeed.innerHTML=" / "+k5}else{myspeed.innerHTML=" X "+Math.pow(2,(4-k))};
+    imgData=ctx.createImageData(cw,ch); 
+    mycls(); // Чистим весь экран
+    ctx.putImageData(imgData,0,0);
+    imgData=ctx.createImageData(Math.floor(cw/k5),ch);  
+}
+ 
+function mycls(){ // Очистка прямоугольной области
+    for (var i=0;i<imgData.data.length;i+=4){
+        imgData.data[i+0]=0;   // R фона
+        imgData.data[i+1]=0;   // G фона
+        imgData.data[i+2]=0;   // B фона
+        imgData.data[i+3]=255; // A фона
+    }
+}
+ 
+var ctx=canvas.getContext("2d");
+var cw=canvas.width;
+var ch=canvas.height;
+var db=4096; // длина буфера чтения со входа звуковой карты
+rangechange(8);
+try{window.AudioContext = window.AudioContext || window.webkitAudioContext;
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
+    window.URL = window.URL || window.webkitURL;
+    audio_context = new AudioContext;
+}catch(e){alert('Этот браузер не поддерживает веб аудио!');
+}
+navigator.getUserMedia({audio: true}, function(stream){
+    var source = audio_context.createMediaStreamSource(stream);
+    var numChannels = 2; // типа стерео
+    source.node = (source.context.createScriptProcessor ||
+        source.context.createJavaScriptNode).call(source.context,
+        db, numChannels, numChannels);
+        false;
+    source.node.onaudioprocess = function(e){
+        var buffer = [];
+        for (var channel = 0; channel < numChannels; channel++){
+            buffer.push(e.inputBuffer.getChannelData(channel));
+        } 
+        mycls();
+        ctx.putImageData(imgData,cw/k5*st,0);
+        for(i=0;i<db;i++){
+            var i1=i;
+            if(k<4){i1=i*Math.pow(2,(4-k))};
+            var y=Math.floor(ch/2)+Math.floor(buffer[1][i]*ch/2);
+            var x=Math.floor((i1)*cw/db/k5);
+            var px=Math.floor(y*cw/k5+x)*4;
+            imgData.data[px]=64;    // R луча
+            imgData.data[px+1]=255; // G луча
+            imgData.data[px+2]=220; // B луча
+            imgData.data[px+3]=255; // A луча
+        }
+        ctx.putImageData(imgData,cw/k5*st,0); // рисуем осциллограмму
+        st++;
+        if(st>=k5){st=0};
+    }
+    source.connect(source.node);
+    source.node.connect(source.context.destination);
+}, function(e){
+});
+</script>
