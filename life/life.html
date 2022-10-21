@@ -79,14 +79,14 @@ audio{
 }</pre>
 <div class=info>Игру «Жизнь» изобрел математик Джон Хортон Конуэй в 1970 году. Она пользовалась популярностью не только среди его коллег. Об увлекательности игры «Жизнь» свидетельствуют результаты множества интересных исследований и многочисленные компьютерные реализации. При этом она имеет непосредственное отношение к перспективной области математики - теории клеточных автоматов.
 </div>
-<audio id=au src='../razminka.mp3'></audio><br />
+<audio id=au src='../track1.mp3'></audio><br />
 <script>
 let auind=1;
 let au=document.getElementById('au');
 au.onended=function(){
 	auind++;
 	if(auind>8)auind=1;
-	au.src='https://mysynthesizer.github.io/track'+auind+'.mp3';
+	au.src='../track'+auind+'.mp3';
 	au.play();
 }
 let myinterval;
