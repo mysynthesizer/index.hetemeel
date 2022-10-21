@@ -1,4 +1,7 @@
 <style>
+body{
+	color: gold;
+}
 .y{
 	position: absolute;
 	width: 5px;
@@ -35,22 +38,60 @@ audio{
 	position: absolute;
 	top: 400px;
 }
+.script{
+	background: white;
+	position: absolute;
+	top: 220px;
+	left: 370px;
+	width: 300px;
+	height: 150px;
+	padding: 5px;
+	color: #008;
+	overflow: auto;
+}
+.info{
+	position: absolute;
+	top: 390px;
+//	left: 370px;
+	width: 100%;
+	padding: 15px;
+}
 </style>
 <div id=contayner></div>
 <button onclick='start()'> старт </button> 
 <button onclick='clearInterval(b); document.body.className = "stop";stop()'> стоп </button>
-<button onclick='myclear()'> очистить </button> 
+<button onclick='myclear()'> очистить </button>
 <div class=contayner>
 <font color=gold>Нарисовать </font><br /><br />
-<button id=mode0> кривую </button><br /><br />
-<button id=mode1> закрашенный прямоугольник </button><br /><br />
-<button id=mode2> пустой прямоугольник </button>
+<button id=mode0> кривую </button><br />
+<button id=mode1> закрашенный прямоугольник </button><br />
+<button id=mode2> пустой прямоугольник </button><hr />
+<button id=mode3> выполнить скрипт </button>
 </div>
-<audio id=au src='razminka.mp3' controls></audio><br />
+<pre id=pre class=script contenteditable>for(i = 0; i < 7; i ++){
+   for(j = 0; j < 7; j ++){
+      for(h = 0; h < 7; h ++){
+         for(l = 0; l < 7; l ++){
+            document.getElementById((i * 10 + h) + '&' + (j * 10 + l)).className = 'y';
+         }
+      }
+   }
+}</pre>
+<div class=info>Игру «Жизнь» изобрел математик Джон Хортон Конуэй в 1970 году. Она пользовалась популярностью не только среди его коллег. Об увлекательности игры «Жизнь» свидетельствуют результаты множества интересных исследований и многочисленные компьютерные реализации. При этом она имеет непосредственное отношение к перспективной области математики - теории клеточных автоматов.
+</div>
+<audio id=au src='../razminka.mp3'></audio><br />
 <script>
+let auind=1;
+let au=document.getElementById('au');
+au.onended=function(){
+	auind++;
+	if(auind>8)auind=1;
+	au.src='https://mysynthesizer.github.io/track'+auind+'.mp3';
+	au.play();
+}
 let myinterval;
 document.bgColor = 'black';
-let au=document.getElementById('au');
+let api = false;
 let r = 70, pressed = false, sx=ex=sy=ey=mode=n=0, b;
 for(i = 0; i < r; i ++){
 	for(j = 0; j < r; j ++){
@@ -81,9 +122,13 @@ for(i = 0; i < r; i ++){
 				for(a=sy;a<=ey;a++)document.getElementById(sx+'&'+a).className = 'y';
 				for(a=sy;a<=ey;a++)document.getElementById(ex+'&'+a).className = 'y';
 			}
+			
 		}
 		contayner.append(cell);
 	}
+}
+mode3.onclick=function(){
+	eval(pre.innerText);
 }
 let mas = [];
 for(i = 0; i < r; i ++){
@@ -101,7 +146,7 @@ for(i = 0; i < 3; i ++){
 }
 document.getElementById('mode0').style.background = 'violet';
 function start(){
-//	au.play();
+	au.play();
 //	document.bgColor = "blue";
 	document.body.className = 'start';
 	b = setInterval(function(){
@@ -122,29 +167,47 @@ function start(){
 			clearInterval(b);
 	//		document.bgColor="black";
 			document.body.className = 'stop';
+			
+			
+			
+			endOfGame();		
+			
 		}
 	}, 100);
 	
 	
 	
+	if(api){
+		
 	
-	let a = new AudioContext();
+        clearInterval(myinterval);
+        myinterval = setInterval(function(){
+            pt[1].frequency.value *= 1.2;
+            if (pt[1].frequency.value >= 18000){
+                clearInterval(myinterval);
+            }
+        }, 100);
+	
+	
+	}else{
+		api = true;
+		a = new AudioContext();
         pt = [a.createMediaElementSource(au), a.createBiquadFilter(), a.destination];
-        pt[1].frequency.value = 3000;
+        pt[1].frequency.value = 18000;
         pt[1].Q.value = 15;
         pt[1].type = "lowpass";
         for (let i = 0; i < 2; i ++) pt[i].connect(pt[i + 1]);
- 
+	}
 	
 }
 	
 	
 function stop(){
         clearInterval(myinterval);
-        pt[1].frequency.value = 8000;
+		pt[1].frequency.value = 8000;
         myinterval = setInterval(function(){
             pt[1].frequency.value /= 1.05;
-            if (pt[1].frequency.value <= 500) clearInterval(myinterval);
+            if (pt[1].frequency.value <= 300) clearInterval(myinterval);
         }, 100);
 }
 	
@@ -161,6 +224,19 @@ function myclear(){
 		for(j = 0; j < r; j ++) mas[i][j] = 0;
 	}
 }
+function endOfGame(){
+				mycur=au.currentTime;
+			c=setInterval(function(){
+				au.volume/=2;
+				au.currentTime=mycur-1;
+				if (au.volume<0.01){
+					au.pause();
+					clearInterval(c);
+				}
+			}, 1000);
+
+}
 document.onpointerdown = function(){pressed = true};
 document.onpointerup = function(){pressed = false};
+document.ondblclick=function(){endOfGame()};
 </script>
