@@ -67,8 +67,7 @@ audio{
 <button id=mode1> закрашенный прямоугольник </button><br />
 <button id=mode2> пустой прямоугольник </button><hr />
 <button id=mode3> выполнить скрипт </button>
-</div>
-<pre id=pre class=script contenteditable>for(i = 0; i < 7; i ++){
+</div><pre id=pre class=script contenteditable>for(i = 0; i < 7; i ++){
    for(j = 0; j < 7; j ++){
       for(h = 0; h < 7; h ++){
          for(l = 0; l < 7; l ++){
@@ -85,6 +84,7 @@ let auind=1;
 let au=document.getElementById('au');
 au.onended=function(){
 	auind++;
+	if(auind==2)auind=3;
 	if(auind>8)auind=1;
 	au.src='../track'+auind+'.mp3';
 	au.play();
