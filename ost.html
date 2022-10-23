@@ -11,6 +11,7 @@ rty
 <span id=myspeed>rty</span>
 </body></html>
 <script>
+    let au=new Audio('track1.mp3');
 function rangechange(e){ // Что происходит при переключении движка
     st=0;
     k=speed.max-e;
@@ -45,7 +46,8 @@ try{window.AudioContext = window.AudioContext || window.webkitAudioContext;
 }catch(e){alert('Этот браузер не поддерживает веб аудио!');
 }
 navigator.getUserMedia({audio: true}, function(stream){
-    var source = audio_context.createMediaStreamSource(stream);
+ //   var source = audio_context.createMediaStreamSource(stream);
+    var source   = audio_context.createMediaElementSource(au);
     var numChannels = 2; // типа стерео
     source.node = (source.context.createScriptProcessor ||
         source.context.createJavaScriptNode).call(source.context,
