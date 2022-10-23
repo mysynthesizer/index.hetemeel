@@ -51,6 +51,7 @@ try{window.AudioContext = window.AudioContext || window.webkitAudioContext;
 navigator.getUserMedia({audio: true}, function(stream){
  //   var source = audio_context.createMediaStreamSource(stream);
     var source   = audio_context.createMediaElementSource(au);
+	source.connect(audio_context.destination);
     var numChannels = 2; // типа стерео
     source.node = (source.context.createScriptProcessor ||
         source.context.createJavaScriptNode).call(source.context,
@@ -77,7 +78,7 @@ navigator.getUserMedia({audio: true}, function(stream){
             imgData.data[px+2]=220; // B луча
             imgData.data[px+3]=255; // A луча
 			
-			ctx1.fillRect(i,buffer[1][i]*128,1,1);
+			ctx1.fillRect(i/128,64+buffer[1][i]*64,1,1);
 			
         }
         ctx.putImageData(imgData,cw/k5*st,0); // рисуем осциллограмму
