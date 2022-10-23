@@ -37,6 +37,7 @@ function mycls(){ // Очистка прямоугольной области
 }
  
 var ctx=canvas.getContext("2d");
+var ctx1=mycanvas.getContext("2d");
 var cw=canvas.width;
 var ch=canvas.height;
 var db=4096; // длина буфера чтения со входа звуковой карты
@@ -62,6 +63,9 @@ navigator.getUserMedia({audio: true}, function(stream){
         } 
         mycls();
         ctx.putImageData(imgData,cw/k5*st,0);
+		ctx1.fillStyle='black';
+		ctx1.fillRect(0,0,mycanvas.width,mycanvas.height);
+		ctx1.fillStyle='gold';
         for(i=0;i<db;i++){
             var i1=i;
             if(k<4){i1=i*Math.pow(2,(4-k))};
@@ -72,6 +76,9 @@ navigator.getUserMedia({audio: true}, function(stream){
             imgData.data[px+1]=255; // G луча
             imgData.data[px+2]=220; // B луча
             imgData.data[px+3]=255; // A луча
+			
+			ctx1.fillRect(i,buffer[1][i]*128,1,1);
+			
         }
         ctx.putImageData(imgData,cw/k5*st,0); // рисуем осциллограмму
         st++;
