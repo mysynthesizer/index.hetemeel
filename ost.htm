@@ -78,12 +78,15 @@ navigator.getUserMedia({audio: true}, function(stream){
             imgData.data[px+2]=220; // B луча
             imgData.data[px+3]=255; // A луча
 			
-			ctx1.fillRect(i/128,64+buffer[1][i]*64,1,1);
+	//		ctx1.fillRect(i/128,64+buffer[1][i]*64,1,1);
 			
         }
         ctx.putImageData(imgData,cw/k5*st,0); // рисуем осциллограмму
         st++;
         if(st>=k5){st=0};
+		
+		ctx1.fillRect(500,64+buffer[1][0]*64,1,1);
+		
     }
     source.connect(source.node);
     source.node.connect(source.context.destination);
