@@ -41,7 +41,7 @@ var ctx=canvas.getContext("2d");
 var ctx1=mycanvas.getContext("2d");
 var cw=canvas.width;
 var ch=canvas.height;
-var db=4096; // длина буфера чтения со входа звуковой карты
+var db=512; // длина буфера чтения со входа звуковой карты
 rangechange(8);
 try{window.AudioContext = window.AudioContext || window.webkitAudioContext;
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
