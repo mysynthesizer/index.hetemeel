@@ -98,11 +98,11 @@ navigator.getUserMedia({audio: true}, function(stream){
 	//	ctx1.fillRect(500,64+buffer[1][0]*64,1,1);
 	
 		mas.push(buffer[1][0]);
-	//	if(mas.length>=400)mas.pop();
+		if(mas.length>=400)mas.pop();
 		
 		for(i=0;i<mas.length;i++){
 		
-			ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
+	//		ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
 		
 		}
 		
