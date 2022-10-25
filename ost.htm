@@ -68,15 +68,15 @@ navigator.getUserMedia({audio: true}, function(stream){
 		ctx1.fillStyle='black';
 		ctx1.fillRect(0,0,mycanvas.width,mycanvas.height);
 		ctx1.fillStyle='gold';
-		let vvvvv=0;
+	//	let vvvvv=0;
         for(i=0;i<db;i++){
 		
 	//		if(i==i|(2**8-1))mas.push(buffer[1][i]);
-			vvvvv++;
-			if(vvvvv>=256){
-				vvvvv=0;
-				mas.push(buffer[1][i]);
-			}
+	//		vvvvv++;
+	//		if(vvvvv>=256){
+	//			vvvvv=0;
+	//			mas.push(buffer[1][i]);
+	//		}
 		
             var i1=i;
             if(k<4){i1=i*Math.pow(2,(4-k))};
