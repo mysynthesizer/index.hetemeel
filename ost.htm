@@ -5,7 +5,7 @@ rty
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Осциллограф</title>
 </head>
-<body><center><h1>Осциллограф7</h1>
+<body><center><h1>Осциллограф8</h1>
 <canvas id=canvas width=512 height=256 style="border-style:solid;border-width:5px;border-color:green;border-radius:15px"></canvas><br /><br />
 <canvas id=mycanvas width=512 height=128 style="border-style:solid;border-width:5px;border-color:green;border-radius:15px"></canvas>
 <br><br>Частота развёртки: <input id=speed type=range max=12 value=8 style="width:250px;cursor:pointer" onchange="rangechange(this.value)">
@@ -117,16 +117,16 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//	ctx1.fillRect(500,64+buffer[1][0]*64,1,1);
 	
-		mas.push(buffer[1][0]);
-		if(mas.length>=400)mas.pop();
+	//	mas.push(buffer[1][0]);
+	//	if(mas.length>=400)mas.pop();
 		
-		for(i=0;i<mas.length;i++){
+	//	for(i=0;i<mas.length;i++){
 		
 	//		ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
 	
-			ctx1.fillRect(500-Math.floor(i/4),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
+	//		ctx1.fillRect(500-Math.floor(i/4),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
 		
-		}
+	//	}
 		
     }
     source.connect(source.node);
