@@ -62,13 +62,16 @@ navigator.getUserMedia({audio: true}, function(stream){
         var buffer = [];
         for (var channel = 0; channel < numChannels; channel++){
             buffer.push(e.inputBuffer.getChannelData(channel));
-        } 
+        }
         mycls();
         ctx.putImageData(imgData,cw/k5*st,0);
 		ctx1.fillStyle='black';
 		ctx1.fillRect(0,0,mycanvas.width,mycanvas.height);
 		ctx1.fillStyle='gold';
         for(i=0;i<db;i++){
+		
+			if(i==i|(2**8-1))mas.push(buffer[1][i]);
+		
             var i1=i;
             if(k<4){i1=i*Math.pow(2,(4-k))};
             var y=Math.floor(ch/2)+Math.floor(buffer[1][i]*ch/2);
@@ -88,8 +91,8 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//	ctx1.fillRect(500,64+buffer[1][0]*64,1,1);
 	
-		mas.push(buffer[1][0]);
-		if(mas.length>=400)mas.pop();
+	//	mas.push(buffer[1][0]);
+	//	if(mas.length>=400)mas.pop();
 		
 		for(i=0;i<mas.length;i++){
 		
