@@ -73,7 +73,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		if(i==i|(2**8-1))mas.push(buffer[1][i]);
 			vvvvv++;
-			if(vvvvv>=256){
+			if(vvvvv>=128){
 				vvvvv=0;
 				mas.push(buffer[1][i]);
 				if(mas.length>=5000)mas.pop();
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-8
+9
