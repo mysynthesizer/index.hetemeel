@@ -75,7 +75,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 			vvvvv++;
 			if(vvvvv>=2048){
 				vvvvv=0;
-				mas.push(buffer[1][i]);
+	//			mas.push(buffer[1][i]);
 	//			if(mas.length>=400)mas.pop();
 			}
             var i1=i;
@@ -94,7 +94,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//	ctx1.fillRect(500,64+buffer[1][0]*64,1,1);
 	
-	//	mas.push(buffer[1][0]);
+		mas.push(buffer[1][0]);
 	//	if(mas.length>=400)mas.pop();
 		
 		for(i=0;i<mas.length;i++){
