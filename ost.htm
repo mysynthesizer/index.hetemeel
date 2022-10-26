@@ -99,7 +99,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 		for(i=0;i<mas.length;i++){
 		
-			ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
+			ctx1.fillRect(500-Math.floor(i/32),64+mas[mas.length-1-i]*64,1,1);
 	
 	//		ctx1.fillRect(500-Math.floor(i/32),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
 		
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-2
+3
