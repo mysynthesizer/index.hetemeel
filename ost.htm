@@ -83,7 +83,7 @@ navigator.getUserMedia({audio: true}, function(stream){
             var y=Math.floor(ch/2)+Math.floor(buffer[1][i]*ch/2);
             var x=Math.floor((i1)*cw/db/k5);
             var px=Math.floor(y*cw/k5+x)*4;
-            imgData.data[px]=64;    // R луча
+            imgData.data[px]=32;    // R луча
             imgData.data[px+1]=255; // G луча
             imgData.data[px+2]=220; // B луча
             imgData.data[px+3]=255; // A луча
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-3
+4
