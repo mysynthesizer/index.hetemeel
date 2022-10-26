@@ -41,7 +41,7 @@ var ctx=canvas.getContext("2d");
 var ctx1=mycanvas.getContext("2d");
 var cw=canvas.width;
 var ch=canvas.height;
-var db=512; // длина буфера чтения со входа звуковой карты
+var db=4096; // длина буфера чтения со входа звуковой карты
 rangechange(8);
 try{window.AudioContext = window.AudioContext || window.webkitAudioContext;
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
@@ -101,7 +101,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
 	
-			ctx1.fillRect(500-Math.floor(i/4),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
+			ctx1.fillRect(500-Math.floor(i),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
 		
 		}
 		
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-1
+2
