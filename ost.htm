@@ -73,10 +73,10 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		if(i==i|(2**8-1))mas.push(buffer[1][i]);
 			vvvvv++;
-			if(vvvvv>=2048){
+			if(vvvvv>=1024){
 				vvvvv=0;
-	//			mas.push(buffer[1][i]);
-	//			if(mas.length>=400)mas.pop();
+				mas.push(buffer[1][i]);
+				if(mas.length>=400)mas.pop();
 			}
             var i1=i;
             if(k<4){i1=i*Math.pow(2,(4-k))};
@@ -94,8 +94,8 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//	ctx1.fillRect(500,64+buffer[1][0]*64,1,1);
 	
-		mas.push(buffer[1][0]);
-		if(mas.length>=400)mas.pop();
+	//	mas.push(buffer[1][0]);
+	//	if(mas.length>=400)mas.pop();
 		
 		for(i=0;i<mas.length;i++){
 		
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-3
+4
