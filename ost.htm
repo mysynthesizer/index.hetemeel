@@ -73,7 +73,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		if(i==i|(2**8-1))mas.push(buffer[1][i]);
 			vvvvv++;
-			if(vvvvv>=1024){
+			if(vvvvv>=512){
 				vvvvv=0;
 				mas.push(buffer[1][i]);
 				if(mas.length>=400)mas.pop();
@@ -101,7 +101,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
 	
-			ctx1.fillRect(500-Math.floor(i/2),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
+			ctx1.fillRect(500-Math.floor(i/4),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
 		
 		}
 		
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-5
+7
