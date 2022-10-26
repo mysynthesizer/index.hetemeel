@@ -101,7 +101,7 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		ctx1.fillRect(500-i,64+mas[mas.length-1-i]*64,1,1);
 	
-			ctx1.fillRect(500-Math.floor(i),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
+			ctx1.fillRect(500-Math.floor(i/2),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
 		
 		}
 		
