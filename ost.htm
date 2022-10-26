@@ -73,10 +73,10 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 	//		if(i==i|(2**8-1))mas.push(buffer[1][i]);
 			vvvvv++;
-			if(vvvvv>=64){
+			if(vvvvv>=256){
 				vvvvv=0;
 				mas.push(buffer[1][i]);
-				if(mas.length>=15000)mas.pop();
+				if(mas.length>=5000)mas.pop();
 			}
             var i1=i;
             if(k<4){i1=i*Math.pow(2,(4-k))};
@@ -99,9 +99,9 @@ navigator.getUserMedia({audio: true}, function(stream){
 		
 		for(i=0;i<mas.length;i++){
 		
-			ctx1.fillRect(500-Math.floor(i/64),64+mas[mas.length-1-i]*64,1,1);
+	//		ctx1.fillRect(500-Math.floor(i/16),64+mas[mas.length-1-i]*64,1,1);
 	
-	//		ctx1.fillRect(500-Math.floor(i/32),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
+			ctx1.fillRect(500-Math.floor(i/16),Math.min(64+mas[mas.length-1-i]*64,64),1,Math.abs(mas[mas.length-1-i]*64));
 		
 		}
 		
@@ -111,4 +111,4 @@ navigator.getUserMedia({audio: true}, function(stream){
 }, function(e){
 });
 </script>
-4
+5
