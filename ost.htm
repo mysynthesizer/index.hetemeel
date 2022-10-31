@@ -76,17 +76,8 @@ navigator.getUserMedia({audio: true}, function(stream){
 			if(vvvvv>=256){
 				vvvvv=0;
 				mas.push(buffer[1][i]);
-				if(mas.length>=5000)mas.pop();
+				if(mas.length>=5000)mas.shift();
 			}
-            var i1=i;
-            if(k<4){i1=i*Math.pow(2,(4-k))};
-            var y=Math.floor(ch/2)+Math.floor(buffer[1][i]*ch/2);
-            var x=Math.floor((i1)*cw/db/k5);
-            var px=Math.floor(y*cw/k5+x)*4;
-            imgData.data[px]=32;    // R луча
-            imgData.data[px+1]=255; // G луча
-            imgData.data[px+2]=220; // B луча
-            imgData.data[px+3]=255; // A луча
         }
     //    ctx.putImageData(imgData,cw/k5*st,0); // рисуем осциллограмму
         st++;
