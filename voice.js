@@ -17,3 +17,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
             mediaRecorder.stop();
         });
     });
+mediaRecorder.addEventListener("stop", function() {
+    const voiceBlob = new Blob(voice, {
+        type: 'audio/wav'
+    });
