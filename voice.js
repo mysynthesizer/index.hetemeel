@@ -21,3 +21,4 @@ mediaRecorder.addEventListener("stop", function() {
     const voiceBlob = new Blob(voice, {
         type: 'audio/wav'
     });
+    au.src=URL.createObjectURL(voiceBlob);
