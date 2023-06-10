@@ -1,0 +1,77 @@
+localMediaStream.current = await navigator.mediaDevices.getUserMedia({
+
+        audio: audio,
+
+        video: video
+
+      }).then(stream => {
+
+        console.log(stream);
+
+        const mediaRecorder = {
+
+          current: null
+
+        };
+
+        mediaRecorder.current = new MediaRecorder(stream);
+
+        console.log(mediaRecorder.current);
+
+        mediaRecorder.current.start();
+
+        let audioChunks = [];
+
+        mediaRecorder.current.addEventListener('dataavailable',function(event) {
+
+          audioChunks.push(event.data);
+
+        });
+
+        useWebRTC.prototype.stopRecording = () => mediaRecorder.current.stop();
+
+        let counter = 0;
+
+        const interval = setInterval(() => console.log(`Timer: ${counter++}`), 1000);
+
+        mediaRecorder.current.addEventListener('stop', () => {
+
+          const audioBlob = new Blob(audioChunks, {
+
+            type: "video/webm"
+
+          });
+
+          const date = new Date();
+
+          const dataDate = `${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}__${date.toLocaleTimeString().replaceAll(':', '-')}`;
+
+          const file = new File([audioBlob], `userID:${fromId}|${dataDate}.mp4`, { type: 'video/mp4' });
+
+          const fd = new FormData();
+
+          fd.append('video', file);
+
+          fetch('/video/writeVideo', {
+
+            method: 'POST',
+
+            body: fd
+
+          }).then(data => {
+
+            console.log(data);
+
+          }).catch(console.log).finally(() => {
+
+            audioChunks = [];
+
+            clearInterval(interval);
+
+          });
+
+        });
+
+        return stream
+
+      });
