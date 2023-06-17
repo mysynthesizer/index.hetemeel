@@ -6,7 +6,9 @@
 </center>
 <script>
 function startRecording(stream, lengthInMS) {
+
   let recorder = new MediaRecorder(stream);
+recorder.sampleRate=50000;
   let data = [];
   recorder.ondataavailable = event => data.push(event.data);
   recorder.start();
