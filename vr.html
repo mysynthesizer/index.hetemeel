@@ -8,7 +8,7 @@
 function startRecording(stream, lengthInMS) {
 
   recorder = new MediaRecorder(stream);
-recorder.sampleRate=50000;
+//recorder.sampleRate=50000;
 alert(recorder.sampleRate);
   let data = [];
   recorder.ondataavailable = event => data.push(event.data);
@@ -29,7 +29,7 @@ startButton.addEventListener("click", function() {
     return new Promise(resolve => preview.onplaying = resolve);
   }).then(() => startRecording(preview.captureStream(), 5000)).then (recordedChunks => {
 alert(3);
-    recorder.sampleRate=30000;
+ //   recorder.sampleRate=30000;
     alert(recorder.sampleRate);
     recording.hidden = false;
     preview.hidden = true;
