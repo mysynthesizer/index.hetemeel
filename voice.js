@@ -3,6 +3,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         const mediaRecorder = new MediaRecorder(stream)});
         let voice = [];
         document.querySelector('#start').addEventListener('click', function(){
+alert(3);
             mediaRecorder.start();
         });
 
