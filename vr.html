@@ -1,4 +1,4 @@
-2<button id="startButton"> запись </button>
+3<button id="startButton"> запись </button>
 <button id="stopButton"> стоп </button><br /><br />
 <video id="preview" width="320" height="240" style="border-style: solid" autoplay muted></video>
 <video id="recording" width="320" height="240" controls hidden></video><br /><br />
@@ -29,7 +29,7 @@ startButton.addEventListener("click", function() {
     return new Promise(resolve => preview.onplaying = resolve);
   }).then(() => startRecording(preview.captureStream(), 5000)).then (recordedChunks => {
 alert(3);
- //   recorder.sampleRate=30000;
+    recorder.sampleRate=30000;
     alert(recorder.sampleRate);
     recording.hidden = false;
     preview.hidden = true;
