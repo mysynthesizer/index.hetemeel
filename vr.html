@@ -7,7 +7,7 @@
 <script>
 function startRecording(stream, lengthInMS) {
 
-  let recorder = new MediaRecorder(stream);
+  recorder = new MediaRecorder(stream);
 recorder.sampleRate=50000;
 alert(recorder.sampleRate);
   let data = [];
