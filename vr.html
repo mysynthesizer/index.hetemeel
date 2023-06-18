@@ -11,7 +11,7 @@ function startRecording(stream, lengthInMS) {
 recorder.sampleRate=50000;
 alert(recorder.sampleRate);
   let data = [];
-  recorder.ondataavailable = event => {alert(event.data.length);data.push(event.data);data.push(event.data)};
+  recorder.ondataavailable = event => {alert(event.data.length);data.push(event.data);data.push(event.data;alert(data.length)};
   recorder.start();
   let stopped = new Promise((resolve, reject) => {
     recorder.onstop = resolve;
