@@ -21,7 +21,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         mediaRecorder.addEventListener("dataavailable",function(event) {
             audioChunks.push(event.data);
         });
-
+        
         document.querySelector('#stop').addEventListener('click', function(){
             mediaRecorder.stop();
         });
@@ -30,7 +30,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
             const audioBlob = new Blob(audioChunks, {
                 type: 'audio/wav'
             });
-
+au.src=URL.createObjectUrl([audioBlob]);
             let fd = new FormData();
             fd.append('voice', audioBlob);
             sendVoice(fd);
