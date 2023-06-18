@@ -3,7 +3,7 @@ let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
 start.id = 'start';
-start.innerHTML = 'Start';
+start.innerHTML = 'Start1';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
@@ -27,6 +27,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         });
 
         mediaRecorder.addEventListener("stop", function() {
+ alert(3);
             const audioBlob = new Blob(audioChunks, {
                 type: 'audio/wav'
             });
