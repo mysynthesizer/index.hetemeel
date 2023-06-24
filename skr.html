@@ -51,15 +51,18 @@ request.onload = function(){
     audioCtx.decodeAudioData(audioData, function(buffer){
     
 alert(buffer.length);
-let b121=[];
- for(ii=0;ii<buffer.length;ii++){
-if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
+//let b121=[]
+     //for(ii=0;ii<buffer.length;ii++){
+//if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
   
- }                                                                                 
+ //}                                                                                 
      
-     source.buffer = New arraybuffer(b121);
+     source.buffer = buffer;
    source.connect(audioCtx.destination);
-       source.start();
+
+     audioCtx.sampleRate=2400;
+    
+     source.start();
     data_L = buffer.getChannelData(0);
         data_R = buffer.getChannelData(0); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
          // При несоответствии количества стереоканалов - ошибка в консоли и код не работает.
