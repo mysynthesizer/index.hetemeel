@@ -24,7 +24,7 @@ bottom: 15px;
 </style>
 </head>
 <body>
-3<audio id=audio src="courcess/zwon.mp3" controls></audio>
+4<audio id=audio src="courcess/zwon.mp3" controls></audio>
 <canvas id=canvas width=512 height=256></canvas>
 <div id=progress></div>
 <button id=btn>btn</button>
@@ -51,8 +51,13 @@ request.onload = function(){
     audioCtx.decodeAudioData(audioData, function(buffer){
     
 alert(buffer.length);
+let b121=[];
+ for(ii=0;ii<buffer.length;ii++){
+if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
+  
+ }                                                                                 
      
-     source.buffer = buffer;
+     source.buffer = b121;
    source.connect(audioCtx.destination);
        source.start();
     data_L = buffer.getChannelData(0);
