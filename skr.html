@@ -20,7 +20,7 @@
 </style>
 </head>
 <body bgcolor=#444>
-<audio id=audio src="track1.mp3" controls></audio>
+1<audio id=audio src="track1.mp3" controls></audio>
 <canvas id=canvas width=512 height=256></canvas>
 <div id=progress></div>
 <script>
@@ -35,6 +35,8 @@ audio.onended = function(){
     progress.style.width = "0px";
 }
 var source = audioCtx.createBufferSource();
+
+    
 var request = new XMLHttpRequest();
 request.open('GET', audio.src, true);
 request.responseType = 'arraybuffer';
@@ -42,7 +44,9 @@ request.onload = function(){
     var audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer){
         source.buffer = buffer;
-        data_L = buffer.getChannelData(0);
+   source.connect(audioCtx.destination);
+        source.start();
+    data_L = buffer.getChannelData(0);
         data_R = buffer.getChannelData(1); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
          // При несоответствии количества стереоканалов - ошибка в консоли и код не работает.
         for(var i = 0; i < data_L.length; i++){
