@@ -19,6 +19,7 @@
 }
 #btn{
 bottom: 15px;
+ font-face: 3em;
 }
 </style>
 </head>
@@ -28,7 +29,7 @@ bottom: 15px;
 <div id=progress></div>
 <button id=btn>btn</button>
     <script>
- //   document.ondblclick=function(){source.start()};
+   btn.onclick=function(){
 var audio = document.getElementById("audio");
 var ctx = canvas.getContext("2d");
 var color_L = "#7cf", color_R = "#f7c"; // Цвета осциллограмм левого и правого стереоканалов
@@ -78,6 +79,7 @@ ctx.fillStyle = color_L;
 ctx.fillRect(0, canvas.height * 0.25, canvas.width, 1);
 ctx.fillStyle = color_R;
 ctx.fillRect(0, canvas.height * 0.75, canvas.width, 1);
-</script>
+    }
+    </script>
 </body>
 </html>
