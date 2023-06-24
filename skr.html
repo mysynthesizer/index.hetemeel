@@ -17,14 +17,18 @@
     width: 0px;
     height: 256px;
 }
+#btn{
+bottom: 15px;
+}
 </style>
 </head>
 <body>
 1<audio id=audio src="courcess/zwon.mp3" controls></audio>
 <canvas id=canvas width=512 height=256></canvas>
 <div id=progress></div>
-<script>
-    document.ondblclick=function(){source.start()};
+<button id=btn>btn</button>
+    <script>
+ //   document.ondblclick=function(){source.start()};
 var audio = document.getElementById("audio");
 var ctx = canvas.getContext("2d");
 var color_L = "#7cf", color_R = "#f7c"; // Цвета осциллограмм левого и правого стереоканалов
