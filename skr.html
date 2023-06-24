@@ -57,7 +57,7 @@ if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
   
  }                                                                                 
      
-     source.buffer = b121;
+     source.buffer = New arrayBuffer(b121);
    source.connect(audioCtx.destination);
        source.start();
     data_L = buffer.getChannelData(0);
