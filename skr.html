@@ -19,12 +19,12 @@
 }
 #btn{
 bottom: 15px;
- font-face: 3em;
+ font-face: 10em;
 }
 </style>
 </head>
 <body>
-2<audio id=audio src="courcess/zwon.mp3" controls></audio>
+3<audio id=audio src="courcess/zwon.mp3" controls></audio>
 <canvas id=canvas width=512 height=256></canvas>
 <div id=progress></div>
 <button id=btn>btn</button>
@@ -49,7 +49,10 @@ request.responseType = 'arraybuffer';
 request.onload = function(){
     var audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer){
-        source.buffer = buffer;
+    
+alert(buffer.length);
+     
+     source.buffer = buffer;
    source.connect(audioCtx.destination);
        source.start();
     data_L = buffer.getChannelData(0);
