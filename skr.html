@@ -47,7 +47,7 @@ request.onload = function(){
    source.connect(audioCtx.destination);
         source.start();
     data_L = buffer.getChannelData(0);
-        data_R = buffer.getChannelData(1); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
+        data_R = buffer.getChannelData(0); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
          // При несоответствии количества стереоканалов - ошибка в консоли и код не работает.
         for(var i = 0; i < data_L.length; i++){
             var x = Math.floor(i / data_L.length * canvas.width);
