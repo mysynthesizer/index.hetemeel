@@ -24,6 +24,7 @@
 <canvas id=canvas width=512 height=256></canvas>
 <div id=progress></div>
 <script>
+    document.ondblclick=function(){source.start()};
 var audio = document.getElementById("audio");
 var ctx = canvas.getContext("2d");
 var color_L = "#7cf", color_R = "#f7c"; // Цвета осциллограмм левого и правого стереоканалов
@@ -45,7 +46,7 @@ request.onload = function(){
     audioCtx.decodeAudioData(audioData, function(buffer){
         source.buffer = buffer;
    source.connect(audioCtx.destination);
-        source.start();
+   //     source.start();
     data_L = buffer.getChannelData(0);
         data_R = buffer.getChannelData(0); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
          // При несоответствии количества стереоканалов - ошибка в консоли и код не работает.
