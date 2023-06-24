@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Визуализатор</title>
+<style>
+#canvas{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background: #333;
+}
+#progress{
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background: rgba(255, 155, 0, 0.5);
+    width: 0px;
+    height: 256px;
+}
+</style>
+</head>
+<body bgcolor=#444>
+<audio id=audio src=sound.mp3" controls></audio>
+<canvas id=canvas width=512 height=256></canvas>
+<div id=progress></div>
+<script>
+var audio = document.getElementById("audio");
+var ctx = canvas.getContext("2d");
+var color_L = "#7cf", color_R = "#f7c"; // Цвета осциллограмм левого и правого стереоканалов
+var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+audio.onplay = function(){b = setInterval(function(){progress.style.width = Math.floor(audio.currentTime / audio.duration * canvas.width) + "px"}, 100)};
+audio.onended = function(){ 
+    this.currentTime = 0;
+    clearInterval(b);
+    progress.style.width = "0px";
+}
+var source = audioCtx.createBufferSource();
+var request = new XMLHttpRequest();
+request.open('GET', audio.src, true);
+request.responseType = 'arraybuffer';
+request.onload = function(){
+    var audioData = request.response;
+    audioCtx.decodeAudioData(audioData, function(buffer){
+        source.buffer = buffer;
+        data_L = buffer.getChannelData(0);
+        data_R = buffer.getChannelData(1); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
+         // При несоответствии количества стереоканалов - ошибка в консоли и код не работает.
+        for(var i = 0; i < data_L.length; i++){
+            var x = Math.floor(i / data_L.length * canvas.width);
+            var L = data_L[i] * canvas.height / 4;
+            var R = data_R[i] * canvas.height / 4;
+            if(Math.floor(i / 16) == i / 16){ // Число 16 для больших аудиофайлов лучше побольше. Нужно подбирать.
+                ctx.fillStyle = color_L;
+                ctx.fillRect(x, canvas.height * 0.25 + L, 1, -L);
+                ctx.fillStyle = color_R;
+                ctx.fillRect(x, canvas.height * 0.75 + R, 1, -R);
+            }
+        }
+    },
+    function(e){"Error with decoding audio data" + e.err});
+}
+request.send();
+canvas.onmousedown = progress.onmousedown = function(e){
+    progress.style.width = e.pageX + "px";
+    audio.currentTime = e.pageX / canvas.width * audio.duration;
+}
+canvas.ondblclick = function(){audio.play()};
+ctx.fillStyle = color_L;
+ctx.fillRect(0, canvas.height * 0.25, canvas.width, 1);
+ctx.fillStyle = color_R;
+ctx.fillRect(0, canvas.height * 0.75, canvas.width, 1);
+</script>
+</body>
+</html>
