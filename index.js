@@ -17,8 +17,8 @@
         const elBtnPlay = document.querySelector(".btn-play");
 
         elBtnPlay.addEventListener("click", () => {
-            audioplayer.play = !audioplayer.play;
-
+         //   audioplayer.play = !audioplayer.play;
+elFile.play();
             if (url) {
                // audioplayer.playAudio(url);
                 elFile.play(url);
