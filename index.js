@@ -1,3 +1,34 @@
+(function () {
+    let url = null;
+
+    const audioplayer = new Audioplayer();
+
+    function uploadFiles() {
+        const elFile = document.querySelector("#file");
+
+        elFile.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+
+            url = window.URL.createObjectURL(file);
+        });
+    }
+
+    function setPlayAudio() {
+        const elBtnPlay = document.querySelector(".btn-play");
+
+        elBtnPlay.addEventListener("click", () => {
+            audioplayer.play = !audioplayer.play;
+
+            if (url) {
+                audioplayer.playAudio(url);
+            }
+        });
+    }
+
+    uploadFiles();
+    setPlayAudio();
+}());
+
 class Audioplayer {
     constructor() {
         this.elAudio = document.createElement("audio");
