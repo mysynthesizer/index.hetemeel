@@ -1,7 +1,7 @@
 (function () {
     let url = null;
 
-    const audioplayer = new Audioplayer();
+ //   const audioplayer = new Audioplayer();
 
     function uploadFiles() {
         const elFile = document.querySelector("#file");
@@ -20,8 +20,10 @@
             audioplayer.play = !audioplayer.play;
 
             if (url) {
-                audioplayer.playAudio(url);
+               // audioplayer.playAudio(url);
+                elFile.play(url);
             }
+            
         });
     }
 
