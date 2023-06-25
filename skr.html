@@ -45,19 +45,19 @@ var source = audioCtx.createBufferSource();
     
 var request = new XMLHttpRequest();
 request.open('GET', audio.src, true);
-request.responseType = 'arraybuffer';
+request.responseType = 'Uint8Array';
 request.onload = function(){
     var audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer){
     
 alert(buffer.length);
-//let b121=[]
-     //for(ii=0;ii<buffer.length;ii++){
-//if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
+let b121=[]
+     for(ii=0;ii<buffer.length;ii++){
+if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
   
- //}                                                                                 
+ }                                                                                 
      
-     source.buffer = buffer;
+     source.buffer = b121;
    source.connect(audioCtx.destination);
 
      audioCtx.sampleRate=24000;
