@@ -4,7 +4,7 @@
  //   const audioplayer = new Audioplayer();
 
     function uploadFiles() {
-        const elFile = document.querySelector("#file");
+        elFile = document.querySelector("#file");
 
         elFile.addEventListener("change", (e) => {
             const file = e.target.files[0];
