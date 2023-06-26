@@ -49,14 +49,17 @@ request.responseType = 'arraybuffer';
 request.onload = function(){
     var audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer){
-    let b1=new Int8Array(buffer);
+
+     data_L = buffer.getChannelData(0);
+   
+     let b1=new Int8Array(buffer);
 alert(b1[1000]);
      let myArrayBuffer=audioCtx.createBuffer(2,buffer.length,44100);
 let nowBuffering=myArrayBuffer.getChannelData(0);
      let b121=[]
      for(ii=0;ii<buffer.length;ii++){
 //if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
-  nowBuffering[ii]=b1[ii];
+  nowBuffering[ii]=data_L[ii];
  }                                                                                 
      
      source.buffer = myArrayBuffer;
@@ -65,8 +68,7 @@ let nowBuffering=myArrayBuffer.getChannelData(0);
      audioCtx.sampleRate=24000;
     
      source.start();
-    data_L = buffer.getChannelData(0);
-        data_R = buffer.getChannelData(0); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
+         data_R = buffer.getChannelData(0); // Если аудиофайл моно - поменяйте в этой сроке единицу на ноль.
          // При несоответствии количества стереоканалов - ошибка в консоли и код не работает.
         for(var i = 0; i < data_L.length; i++){
             var x = Math.floor(i / data_L.length * canvas.width);
