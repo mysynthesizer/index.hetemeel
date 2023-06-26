@@ -1,4 +1,4 @@
-<html>
+if<html>
 <head>
 <meta charset="utf-8">
 <title>Визуализатор</title>
@@ -50,7 +50,7 @@ request.onload = function(){
     var audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer){
     let b1=new Uint8Array(buffer);
-alert(b1[3]);
+alert(b1[77]);
      let myArrayBuffer=audioCtx.createBuffer(2,buffer.length,44100);
 let nowBuffering=myArrayBuffer.getChannelData(0);
      let b121=[]
