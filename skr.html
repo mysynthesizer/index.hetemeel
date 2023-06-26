@@ -49,8 +49,8 @@ request.responseType = 'arraybuffer';
 request.onload = function(){
     var audioData = request.response;
     audioCtx.decodeAudioData(audioData, function(buffer){
-    
-alert(buffer[3]);
+    let b1=new Uint8Array(buffer);
+alert(b1[3]);
      let myArrayBuffer=audioCtx.createBuffer(2,buffer.length,44100);
 let nowBuffering=myArrayBuffer.getChannelData(0);
      let b121=[]
