@@ -24,7 +24,7 @@ bottom: 15px;
 </style>
 </head>
 <body>
-9<audio id=audio src="courcess/zwon.mp3" controls></audio>
+1<audio id=audio src="courcess/zwon.mp3" controls></audio>
 <canvas id=canvas width=512 height=256></canvas>
 <div id=progress></div>
 <button id=btn>btn</button>
@@ -59,7 +59,7 @@ let nowBuffering=myArrayBuffer.getChannelData(0);
      let b121=[]
      for(ii=0;ii<buffer.length;ii++){
 //if(Math.floor(ii/2)==ii/2) b121.push(buffer[ii]);
-  nowBuffering[Math.floor(ii/2)]=data_L[ii];
+//  nowBuffering[ii]=data_L[Math.floor(ii/2)];
  }                                                                                 
      
      source.buffer = myArrayBuffer;
