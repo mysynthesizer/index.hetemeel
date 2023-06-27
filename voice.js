@@ -31,7 +31,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
             const audioBlob = new Blob(audioChunks, {
                 type: 'audio/wav'
             });
-au.src=URL.createObjectURL(audioBlob);
+au.src=mya.href=URL.createObjectURL(audioBlob);
             let fd = new FormData();
             fd.append('voice', audioBlob);
             sendVoice(fd);
