@@ -32,6 +32,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
                 type: 'audio/wav'
             });
 au.src=mya.href=URL.createObjectURL(audioBlob);
+  mya.download="rty";
             let fd = new FormData();
             fd.append('voice', audioBlob);
             sendVoice(fd);
