@@ -1,4 +1,4 @@
-no//const URL = 'voice.php';
+//const URL = 'voice.php';
 let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
