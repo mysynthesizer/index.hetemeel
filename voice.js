@@ -17,7 +17,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         document.querySelector('#start').addEventListener('click', function(){
             mediaRecorder.start();
         });
-   //     audioChunks = [];
+      audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
             audioChunks.push(event.data);
         alert(event.data.length);
@@ -39,7 +39,7 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
       //      let fd = new FormData();
        //     fd.append('voice', audioBlob);
      //       sendVoice(fd);
-            audioChunks = [];
+      //      audioChunks = [];
         });
     });
 
