@@ -19,7 +19,8 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         });
       audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
-        console.log(New Uint8Array(event.data)[0]);
+     let rrr=New Uint8Array(event.data);
+            console.log(rrr[0]);
             audioChunks.push(event.data);
         alert(event.data.length);
         });
