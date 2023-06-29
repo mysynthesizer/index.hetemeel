@@ -1,4 +1,4 @@
-//const URL = 'voice.php';
+I'm//const URL = 'voice.php';
 let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
@@ -36,9 +36,9 @@ navigator.mediaDevices.getUserMedia({ audio: true})
             });
 au.src=mya.href=URL.createObjectURL(audioBlob);
   mya.download="rty";
-            let fd = new FormData();
-            fd.append('voice', audioBlob);
-            sendVoice(fd);
+      //      let fd = new FormData();
+       //     fd.append('voice', audioBlob);
+     //       sendVoice(fd);
             audioChunks = [];
         });
     });
