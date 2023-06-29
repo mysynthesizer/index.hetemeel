@@ -20,6 +20,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         let audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
             audioChunks.push(event.data);
+        alert(event.data.length);
         });
         
         document.querySelector('#stop').addEventListener('click', function(){
