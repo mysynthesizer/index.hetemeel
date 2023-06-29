@@ -29,7 +29,8 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 
         mediaRecorder.addEventListener("stop", function() {
  console.log("77"+audioChunks[0].length);
-        //    alert(audioChunks.length);
+  console.log(audioChanks.isArray());
+            //    alert(audioChunks.length);
             const audioBlob = new Blob(audioChunks, {
                 type: 'audio/wav'
             });
