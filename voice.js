@@ -20,7 +20,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
       audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
    //  let rrr=Uint8Array(event.data);
-            console.log(typeof event.data);
+            console.log(event.data);
             audioChunks.push(event.data);
         alert(event.data.length);
         });
