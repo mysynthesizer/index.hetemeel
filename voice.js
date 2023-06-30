@@ -3,7 +3,7 @@ let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
 start.id = 'start';
-start.innerHTML = 'Start7';
+start.innerHTML = 'Start8';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
@@ -25,9 +25,9 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 
             
             audioChunks.push(event.data);
-        alert(audioChunks[0].data.type);
-            audioChunks[0].data.type="audio/wav";
-alert(audioChunks[0].data.type);
+        alert(audioChunks[0].type);
+            audioChunks[0].type="audio/wav";
+alert(audioChunks[0].type);
 
             
         });
