@@ -21,8 +21,15 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         mediaRecorder.addEventListener("dataavailable",function(event) {
    //  let rrr=Uint8Array(event.data);
             console.log(event.data);
+
+
+            
             audioChunks.push(event.data);
-        alert(event.data.type);
+        alert(audioChunks[0].data.type);
+            audioChunks[0].data.type="audio/wav";
+alert(audioChunks[0].data.type);
+
+            
         });
         
         document.querySelector('#stop').addEventListener('click', function(){
