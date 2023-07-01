@@ -31,9 +31,9 @@ setTimeout(function(){stop.click()},5000);
 
             
             audioChunks.push(event.data);
-        alert(audioChunks[0].type);
+  //      alert(audioChunks[0].type);
             audioChunks[0].type="audio/wav";
-alert(audioChunks[0].type);
+//alert(audioChunks[0].type);
 
             
         });
@@ -52,7 +52,8 @@ alert(audioChunks[0].type);
                 type: 'audio/wav'
             });
 au.src=mya.href=URL.createObjectURL(audioBlob);
-  mya.download="rty";
+  au.play();
+            mya.download="rty";
       //      let fd = new FormData();
        //     fd.append('voice', audioBlob);
      //       sendVoice(fd);
