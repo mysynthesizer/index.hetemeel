@@ -18,7 +18,10 @@ navigator.mediaDevices.getUserMedia({ audio: true})
         document.querySelector('#start').addEventListener('click', function(){
             mediaRecorder.start();
 start.disabled=true;
-        stop.disabled=false;    
+        stop.disabled=false;   
+
+setTimeout(function(){stop.click()},5000);
+            
         });
       audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
