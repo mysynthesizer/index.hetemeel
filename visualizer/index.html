@@ -29,7 +29,8 @@ body{
 </head>
 <body><center>
 <canvas id="myCanvas" width=1024 height=256 style="background:blue"></canvas><br /><br />
-<audio src='razminka.mp3' controls></audio>
+<audio src='razminka.mp3' controls></audio><br /><br />
+	<input id=myfile type=file />
 </center></body>
 <script>
 var audio = document.querySelector('audio');
@@ -56,5 +57,9 @@ audio.onplay = function(){
     }
 	}, 20);
 }
+myfile.oninput=function(){
+audio.src = URL.createObjectURL(this.files[0]);
+	audio.play();
+	}
 </script>
 </html>
