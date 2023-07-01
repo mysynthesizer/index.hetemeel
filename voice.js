@@ -76,7 +76,7 @@ async function sendVoice(form) {
     }
 }
 let trewq={
-rty: ytr,
-sdf: fds
+rty: "ytr",
+sdf: 323
         };
 alert(trewq.rty);
