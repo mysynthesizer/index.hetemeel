@@ -50,12 +50,9 @@ audio.onplay = function(){
 		ctx.globalAlpha = 0.05; // Это для получения эффекта плавного погасания полос
 		ctx.fillRect (0, 0, canvas.width, canvas.height); // Полупрозрачно чистим экран
 		ctx.globalAlpha = 1;
-		ctx.strokeStyle = '#3f9';
-		ctx.beginPath();
-		ctx.moveTo(Math.floor(150 * Math.sin(counter / 1)), 255 - frequencyData[0]);
-		for(i = 1; i < 1024; i ++) ctx.lineTo(i + Math.floor(350 * Math.sin(i / 15)), 255 - frequencyData[i]);
-		ctx.stroke();
-		counter ++;
+		for(i=0;i<1024;i++){
+        ctx.fillRect(i,255-frequencyData[i],1,frequencyData[i]); // рисуем полосу
+    }
 	}, 20);
 }
 </script>
