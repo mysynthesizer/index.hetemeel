@@ -3,7 +3,7 @@ let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
 start.id = 'start';
-start.innerHTML = 'Start8';
+start.innerHTML = 'Start9';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
@@ -60,7 +60,7 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
       //      audioChunks = [];
         });
     });
-
+au.onended=function(){start.click()};
 async function sendVoice(form) {
     let promise = await fetch(URL, {
         method: 'POST',
