@@ -7,6 +7,7 @@ start.innerHTML = 'Start8';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
+stop.disabled=true;
 document.body.appendChild(div);
 document.body.appendChild(start);
 document.body.appendChild(stop);
@@ -16,6 +17,8 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 
         document.querySelector('#start').addEventListener('click', function(){
             mediaRecorder.start();
+start.disabled=true;
+        stop.disabled=false;    
         });
       audioChunks = [];
         mediaRecorder.addEventListener("dataavailable",function(event) {
@@ -34,6 +37,8 @@ alert(audioChunks[0].type);
         
         document.querySelector('#stop').addEventListener('click', function(){
             mediaRecorder.stop();
+            start.disabled=false;
+            stop.disabled=true;
         });
 
         mediaRecorder.addEventListener("stop", function() {
