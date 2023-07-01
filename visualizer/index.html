@@ -46,9 +46,10 @@ audio.onplay = function(){
 	var counter = 0;
 	setInterval(function(){
 		analyser.getByteFrequencyData(frequencyData); // Записываем в массив данные уровней частот
-		ctx.fillStyle = "black"; // Задаём цвет фона
-		ctx.globalAlpha = 0.05; // Это для получения эффекта плавного погасания полос
-		ctx.fillRect (0, 0, canvas.width, canvas.height); // Полупрозрачно чистим экран
+		ctx.fillStyle="blue"; // Задаём цвет фона
+    ctx.globalAlpha=0.05; // Это для получения эффекта плавного погасания полос
+    ctx.fillRect (0, 0, canvas.width, canvas.height); // Полупрозрачно чистим экран
+    ctx.fillStyle="gold";
 		ctx.globalAlpha = 1;
 		for(i=0;i<1024;i++){
         ctx.fillRect(i,255-frequencyData[i],1,frequencyData[i]); // рисуем полосу
