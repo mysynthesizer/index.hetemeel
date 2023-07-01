@@ -75,3 +75,8 @@ async function sendVoice(form) {
         document.querySelector('#messages').appendChild(audio);
     }
 }
+let trewq={
+rty: ytr,
+sdf: fds
+        };
+alert(trewq.rty);
