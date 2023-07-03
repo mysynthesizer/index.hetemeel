@@ -60,7 +60,7 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
            audioChunks = [];
         });
     });
-au.onended=function(){start.click()};
+//au.onended=function(){start.click()};
 async function sendVoice(form) {
     let promise = await fetch(URL, {
         method: 'POST',
