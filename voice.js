@@ -27,11 +27,12 @@ setTimeout(function(){stop.click()},5000);
         mediaRecorder.addEventListener("dataavailable",function(event) {
    //  let rrr=Uint8Array(event.data);
             console.log(event.data);
-
+console.log(rrr);
 
             
             audioChunks.push(event.data);
-  //      alert(audioChunks[0].type);
+  console.log(audioChunks);
+            //      alert(audioChunks[0].type);
             audioChunks[0].type="audio/wav";
 //alert(audioChunks[0].type);
 
