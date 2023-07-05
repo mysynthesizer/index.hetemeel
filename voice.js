@@ -82,3 +82,4 @@ sdf: 323
 alert(trewq.rty);
 trewq.rty="qwert";
 alert(trewq.rty);
+console.log(trewq);
