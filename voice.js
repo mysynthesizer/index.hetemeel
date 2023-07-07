@@ -53,7 +53,7 @@ console.log(rrr);
                 type: 'audio/wav'
             });
 au.src=mya.href=URL.createObjectURL(audioBlob);
-  au.play();
+ // au.play();
             mya.download="rty";
 
 var audioCtx = new AudioContext();
