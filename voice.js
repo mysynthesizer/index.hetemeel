@@ -4,7 +4,7 @@ let div = document.createElement('div');
 div.id = 'messages';
 let mystart = document.createElement('button');
 mystart.id = 'mystart';
-mystart.innerHTML = 'Start2';
+mystart.innerHTML = 'Start3';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
@@ -53,9 +53,10 @@ console.log(rrr);
             const audioBlob = new Blob(audioChunks, {
                 type: 'audio/wav'
             });
-au.src=mya.href=URL.createObjectURL(audioBlob);
- // au.play();
-            mya.download="rty";
+//au.src=mya.href=URL.createObjectURL(audioBlob);
+ au.src="track1.mp3";
+		// au.play();
+    //        mya.download="rty";
 
 var audioCtx = new AudioContext();
 	var source   = audioCtx.createMediaElementSource(au);
