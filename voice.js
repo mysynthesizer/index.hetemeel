@@ -1,4 +1,5 @@
 //const URL = 'voice.php';
+let au=document.getElementById("au");
 let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
