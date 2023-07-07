@@ -41,7 +41,7 @@ audio.onplay = function(){
 	var analyser = audioCtx.createAnalyser();
     source.connect(analyser); // Подключаем анализатор к элементу audio
     analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
-
+console.log(audioCtx.listener);
 	audioCtx.samplerate=1000;
 	
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
