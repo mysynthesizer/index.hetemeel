@@ -2,15 +2,15 @@
 let au=document.getElementById("au");
 let div = document.createElement('div');
 div.id = 'messages';
-let start = document.createElement('button');
-start.id = 'start';
-start.innerHTML = 'Start1';
+let mystart = document.createElement('button');
+mystart.id = 'mystart';
+mystart.innerHTML = 'Start2';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
 stop.disabled=true;
 document.body.appendChild(div);
-document.body.appendChild(start);
+document.body.appendChild(mystart);
 document.body.appendChild(stop);
 navigator.mediaDevices.getUserMedia({ audio: true})
     .then(stream => {
@@ -18,7 +18,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
 
         document.querySelector('#start').addEventListener('click', function(){
             mediaRecorder.start();
-start.disabled=true;
+mystart.disabled=true;
         stop.disabled=false;   
 
 setTimeout(function(){stop.click()},5000);
@@ -42,7 +42,7 @@ console.log(rrr);
         
         document.querySelector('#stop').addEventListener('click', function(){
             mediaRecorder.stop();
-            start.disabled=false;
+            mystart.disabled=false;
             stop.disabled=true;
         });
 
