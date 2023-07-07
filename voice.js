@@ -55,6 +55,14 @@ console.log(rrr);
 au.src=mya.href=URL.createObjectURL(audioBlob);
   au.play();
             mya.download="rty";
+
+var audioCtx = new AudioContext();
+	var source   = audioCtx.createMediaElementSource(au);
+//	var analyser = audioCtx.createAnalyser();
+  //  source.connect(analyser); // Подключаем анализатор к элементу audio
+    source.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
+source.start();
+    
       //      let fd = new FormData();
        //     fd.append('voice', audioBlob);
      //       sendVoice(fd);
