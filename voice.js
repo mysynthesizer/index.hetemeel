@@ -16,7 +16,7 @@ navigator.mediaDevices.getUserMedia({ audio: true})
     .then(stream => {
         const mediaRecorder = new MediaRecorder(stream);
 
-        document.querySelector('#start').addEventListener('click', function(){
+        document.querySelector('#mystart').addEventListener('click', function(){
             mediaRecorder.start();
 mystart.disabled=true;
         stop.disabled=false;   
