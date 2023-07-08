@@ -5,7 +5,7 @@
 <style>
 body{
 	//background: #003;
-	font-family: arial;
+	//font-family: arial;
 }
 #myCanvas{
 	border-width: 3px;
@@ -19,20 +19,20 @@ body{
 </head>
 <body><center>
 <canvas id="myCanvas" width=1024 height=256 style="background:blue"></canvas><br /><br />
-<audio src='razminka.mp3' controls></audio><br /><br />
+<audio controls></audio><br /><br />
 	<input id=myfile type=file />
 </center></body>
 <script>
 var audio = document.querySelector('audio');
 audio.onplay = function(){
-	this.currentTime = 12;
+//	this.currentTime = 12;
 	var audioCtx = new AudioContext();
 	var source   = audioCtx.createMediaElementSource(audio);
 	var analyser = audioCtx.createAnalyser();
     source.connect(analyser); // Подключаем анализатор к элементу audio
     analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
-console.log(audioCtx.listener);
-	audioCtx.samplerate=1000;
+//console.log(audioCtx.listener);
+//	audioCtx.samplerate=1000;
 	
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 	var canvas = document.getElementById('myCanvas');
