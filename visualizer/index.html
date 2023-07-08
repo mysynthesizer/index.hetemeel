@@ -3,18 +3,12 @@
 <title>визуализатор</title>
 <meta charset="utf-8" />
 <style>
-body{
-	//background: #003;
-	//font-family: arial;
-}
 #myCanvas{
 	border-width: 3px;
 	border-color: white;
 	border-radius: 15px;
 	border-style: solid;
 	box-shadow: 0 0 15px 15px #7e7;
-//	animation: spin-counter 5s linear infinite;
-}
 </style>
 </head>
 <body><center>
@@ -25,15 +19,11 @@ body{
 <script>
 var audio = document.querySelector('audio');
 audio.onplay = function(){
-//	this.currentTime = 12;
 	var audioCtx = new AudioContext();
 	var source   = audioCtx.createMediaElementSource(audio);
 	var analyser = audioCtx.createAnalyser();
     source.connect(analyser); // Подключаем анализатор к элементу audio
     analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
-//console.log(audioCtx.listener);
-//	audioCtx.samplerate=1000;
-	
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
 	var canvas = document.getElementById('myCanvas');
 	var ctx = canvas.getContext('2d');
