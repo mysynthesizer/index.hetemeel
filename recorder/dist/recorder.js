@@ -67,6 +67,9 @@ var Recorder = exports.Recorder = (function () {
                 command: 'record',
                 buffer: buffer
             });
+
+console.log(buffer);
+    
         };
 
         source.connect(this.node);
