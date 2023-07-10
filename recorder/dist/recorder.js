@@ -57,6 +57,7 @@ var Recorder = exports.Recorder = (function () {
         this.node = (this.context.createScriptProcessor || this.context.createJavaScriptNode).call(this.context, this.config.bufferLen, this.config.numChannels, this.config.numChannels);
 
         this.node.onaudioprocess = function (e) {
+            alert(3);
             if (!_this.recording) return;
 
             var buffer = [];
