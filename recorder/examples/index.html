@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <h1>Recorder2.js simple WAV export example</h1>
+  <h1>Recorder3.js simple WAV export example</h1>
 
   <p>Make sure you are using a recent version of Google Chrome.</p>
   <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
@@ -33,7 +33,7 @@
   }
 
   var audio_context;
-  //recorder;
+  let recorder;
 
   function startUserMedia(stream) {
     var input = audio_context.createMediaStreamSource(stream);
@@ -43,7 +43,7 @@
     //input.connect(audio_context.destination);
     //__log('Input connected to audio context destination.');
     
-    recorder = new Recorder(input);
+    recorder = new Recorder323(input);
     __log('Recorder initialised.');
   }
 
