@@ -1,4 +1,4 @@
-rty4
+rty5
 <style>
 canvas{
 background: gold;
@@ -6,12 +6,15 @@ width: 300px;
 height: 300px;
 }
 </style>
-<canvas id=cnv></canvas>
+<canvas id=cnv></canvas><br /><br />
+<button onclick="rty()">rty</button>
 <script>
 let ctx=cnv.getContext('2d');
 ctx.fillRect(15,15,15,15);
+  function rty,(){
   let auctx=new AudioContext;
   let source=auctx.createMediaElementSource(new Audio("track1.mp3"));
   source.connect(auctx.destination);
   source.start();
+  }
 </script>
