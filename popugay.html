@@ -7,12 +7,15 @@
     <audio id=au controls></audio><br /><br />
     <a id=mya>С К А Ч А Т Ь</a>
 <script>
+
+console.log(au);
+    
 //const URL = 'voice.php';
 let div = document.createElement('div');
 div.id = 'messages';
 let start = document.createElement('button');
 start.id = 'start';
-start.innerHTML = 'Start4';
+start.innerHTML = 'Start5';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
@@ -66,7 +69,7 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
     
             au.play();
 
-console.log(au);
+//console.log(au);
                                                           
             mya.download="rty";
       //      let fd = new FormData();
