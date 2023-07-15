@@ -11,7 +11,7 @@
 	box-shadow: 0 0 15px 15px #7e7;
 </style>
 </head>
-<body><center>rty8;
+<body><center>rty9
 <canvas id="myCanvas" width=1024 height=256 style="background:blue"></canvas><br /><br />
 <audio src="../track1.mp3" controls></audio><br /><br />
 	<input id=myfile type=file /><br /><br >
@@ -23,10 +23,10 @@
 //audio.onplay = function(){
 	function rty(){
 	var audioCtx = new AudioContext();
-	var source   = audioCtx.createMediaElementSource(new Audio("../track2.mp3").play());
+	var source   = audioCtx.createMediaElementSource(new Audio("../track2.mp3").play()).connect(audioCtx.destination);
 	var analyser = audioCtx.createAnalyser();
     source.connect(analyser); // Подключаем анализатор к элементу audio
-    analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
+   // analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
 //source.start();
 		
 	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
