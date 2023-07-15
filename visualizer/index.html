@@ -11,15 +11,17 @@
 	box-shadow: 0 0 15px 15px #7e7;
 </style>
 </head>
-<body><center>rty3
+<body><center>rty4
 <canvas id="myCanvas" width=1024 height=256 style="background:blue"></canvas><br /><br />
-<audio controls></audio><br /><br />
-	<input id=myfile type=file />
+<audio src="../track1.mp3" controls></audio><br /><br />
+	<input id=myfile type=file /><br /><br >
+	<button onclick="rty()">rty</button>
 </center></body>
 <script>
 //var audio = document.querySelector('audio');
 	
-audio.onplay = function(){
+//audio.onplay = function(){
+	fynction rty(){
 	var audioCtx = new AudioContext();
 	var source   = audioCtx.createMediaElementSource(new Audio("../track2.mp3"));
 	var analyser = audioCtx.createAnalyser();
