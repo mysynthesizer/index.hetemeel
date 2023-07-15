@@ -61,7 +61,10 @@ setTimeout(function(){stop.click()},5000);
                 type: 'audio/wav'
             });
 au.src=mya.href=URL.createObjectURL(audioBlob);
-  au.play();
+
+            au.playbackRate=2;
+    
+            au.play();
             mya.download="rty";
       //      let fd = new FormData();
        //     fd.append('voice', audioBlob);
