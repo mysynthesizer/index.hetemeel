@@ -1,4 +1,4 @@
-rty3
+rty4
 <style>
 canvas{
 background: gold;
@@ -12,6 +12,6 @@ let ctx=cnv.getContext('2d');
 ctx.fillRect(15,15,15,15);
   let auctx=new AudioContext;
   let source=auctx.createMediaElementSource(new Audio("track1.mp3"));
-  source.connect(au.destination);
+  source.connect(auctx.destination);
   source.start();
 </script>
