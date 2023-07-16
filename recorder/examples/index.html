@@ -28,6 +28,7 @@
   <pre id="log"></pre>
 
   <script>
+	  qwert.innerText="rty3";
   function __log(e, data) {
     log.innerHTML += "\n" + e + " " + (data || '');
   }
@@ -52,6 +53,9 @@
     button.disabled = true;
     button.nextElementSibling.disabled = false;
     __log('Recording...');
+
+setTimeout(function(){stopRecording()},5000);
+	  
   }
 
   function stopRecording(button) {
