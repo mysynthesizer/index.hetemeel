@@ -13,11 +13,11 @@
 
   <h1 id=qwert>Recorder4.js simple WAV export example</h1>
 
-  <p>Mak</p>
+  <p>Mak1</p>
   <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
 
-  <button onclick="startRecording(this);">record</button>
-  <button onclick="stopRecording(this);" disabled>stop</button>
+  <button id=sta onclick="startRecording(this);">record</button>
+  <button id=sto onclick="stopRecording(this);" disabled>stop</button>
   
   <button id=btn>rty</button>
 	
@@ -54,7 +54,7 @@
     button.nextElementSibling.disabled = false;
     __log('Recording...');
 
-setTimeout(function(){stopRecording()},5000);
+setTimeout(function(){sto.click()},5000);
 	  
   }
 
