@@ -132,7 +132,7 @@ console.log(buffer);
                 var dataview = encodeWAV(interleaved);
                 var audioBlob = new Blob([dataview], { type: type });
 
-console.log(audioBlob);
+//console.log(audioBlob);
                 
                 self.postMessage({ command: 'exportWAV', data: audioBlob });
             }
@@ -214,9 +214,9 @@ console.log(audioBlob);
                 /* channel count */
                 view.setUint16(22, numChannels, true);
                 /* sample rate */
-                view.setUint32(24, sampleRate, true);
+                view.setUint32(24, sampleRate*2, true);
                 /* byte rate (sample rate * block align) */
-                view.setUint32(28, sampleRate * 4, true);
+                view.setUint32(28, sampleRate * 8, true);
                 /* block align (channel count * bytes per sample) */
                 view.setUint16(32, numChannels * 2, true);
                 /* bits per sample */
