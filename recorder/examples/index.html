@@ -13,7 +13,7 @@
 
   <h1 id=qwert>Recorder4.js simple WAV export example</h1>
 
-  <p>Mak1</p>
+  <p>Mak2</p>
   <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
 
   <button id=sta onclick="startRecording(this);">record</button>
@@ -74,7 +74,7 @@ setTimeout(function(){sto.click()},5000);
     recorder && recorder.exportWAV(function(blob) {
       var url = URL.createObjectURL(blob);
 
-	    alert(blob.length);
+	  //  alert(blob.length);
 	  
 	  var li = document.createElement('li');
       var au = document.createElement('audio');
@@ -82,6 +82,8 @@ setTimeout(function(){sto.click()},5000);
       
       au.controls = true;
       au.src = url;
+	    au.play();
+	    au.onended=function(){sta.click()};
       hf.href = url;
       hf.download = new Date().toISOString() + '.wav';
       hf.innerHTML = hf.download;
