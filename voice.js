@@ -1,4 +1,4 @@
-//const URL = 'voice.php';
+const myURL = 'http://voice.php';
 let au=document.getElementById("au");
 let div = document.createElement('div');
 div.id = 'messages';
@@ -58,12 +58,12 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
 		// au.play();
     //        mya.download="rty";
 
-var audioCtx = new AudioContext();
-	var source   = audioCtx.createMediaElementSource(au);
+//var audioCtx = new AudioContext();
+//	var source   = audioCtx.createMediaElementSource(au);
 //	var analyser = audioCtx.createAnalyser();
   //  source.connect(analyser); // Подключаем анализатор к элементу audio
-    source.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
-source.start();
+  //  source.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
+//source.start();
     
       //      let fd = new FormData();
        //     fd.append('voice', audioBlob);
@@ -90,7 +90,7 @@ let trewq={
 rty: "ytr",
 sdf: 323
         };
-alert(trewq.rty);
+//alert(trewq.rty);
 trewq.rty="qwert";
-alert(trewq.rty);
+//alert(trewq.rty);
 console.log(trewq);
