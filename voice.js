@@ -1,10 +1,10 @@
-const myURL = 'http://trohtibidoh.zzz.com.ua/voice.php';
+const myURL = 'https://trohtibidoh.zzz.com.ua/voice.php';
 let au=document.getElementById("au");
 let div = document.createElement('div');
 div.id = 'messages';
 let mystart = document.createElement('button');
 mystart.id = 'mystart';
-mystart.innerHTML = 'Start7';
+mystart.innerHTML = 'Start8';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
