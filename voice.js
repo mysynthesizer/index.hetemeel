@@ -84,7 +84,7 @@ async function sendVoice(form) {
         audio.controls = true;
         audio.autoplay = true;
         document.querySelector('#messages').appendChild(audio);
-    }
+    }else{console.log("pas🍺")};
 }
 let trewq={
 rty: "ytr",
