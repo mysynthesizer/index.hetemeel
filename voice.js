@@ -4,7 +4,7 @@ let div = document.createElement('div');
 div.id = 'messages';
 let mystart = document.createElement('button');
 mystart.id = 'mystart';
-mystart.innerHTML = 'Start8';
+mystart.innerHTML = 'Start9';
 let stop = document.createElement('button');
 stop.id = 'stop';
 stop.innerHTML = 'Stop';
@@ -90,7 +90,7 @@ let trewq={
 rty: "ytr",
 sdf: 323
         };
-//alert(trewq.rty);
+alert("f🍻f");
 trewq.rty="qwert";
 //alert(trewq.rty);
 console.log(trewq);
