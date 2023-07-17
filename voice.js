@@ -73,7 +73,7 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
     });
 //au.onended=function(){start.click()};
 async function sendVoice(form) {
-    let promise = await fetch(URL, {
+    let promise = await fetch(myURL, {
         method: 'POST',
         body: form});
     if (promise.ok) {
