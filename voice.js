@@ -65,9 +65,9 @@ au.src=mya.href=URL.createObjectURL(audioBlob);
   //  source.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
 //source.start();
     
-      //      let fd = new FormData();
-       //     fd.append('voice', audioBlob);
-     //       sendVoice(fd);
+           let fd = new FormData();
+            fd.append('voice', audioBlob);
+          sendVoice(fd);
            audioChunks = [];
         });
     });
