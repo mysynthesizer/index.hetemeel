@@ -29,7 +29,7 @@
   <pre id="log"></pre>
 
   <script>
-	  qwert.innerText="rty3";
+	  qwert.innerText="rty4";
   function __log(e, data) {
     log.innerHTML += "\n" + e + " " + (data || '');
   }
@@ -53,17 +53,18 @@
     recorder && recorder.record();
     button.disabled = true;
     button.nextElementSibling.disabled = false;
-    __log('Recording...');
+    //__log('Recording...');
 
 setTimeout(function(){sto.click()},5000);
 	  
   }
 
   function stopRecording(button) {
+	  au.currentTime=0;
     recorder && recorder.stop();
     button.disabled = true;
     button.previousElementSibling.disabled = false;
-    __log('Stopped recording.');
+  //  __log('Stopped recording.');
     
     // create WAV download link using audio data blob
     createDownloadLink();
