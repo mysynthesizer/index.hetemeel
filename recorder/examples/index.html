@@ -13,7 +13,8 @@
 
   <h1 id=qwert>Recorder4.js simple WAV export example</h1>
 
-  <p>Mak2</p>
+  <p>Mak3</p>
+	<audio id=au controls></audio>
   <p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
 
   <button id=sta onclick="startRecording(this);">record</button>
@@ -76,20 +77,20 @@ setTimeout(function(){sto.click()},5000);
 
 	  //  alert(blob.length);
 	  
-	  var li = document.createElement('li');
-      var au = document.createElement('audio');
-      var hf = document.createElement('a');
+	//  var li = document.createElement('li');
+  //    var au = document.createElement('audio');
+  //    var hf = document.createElement('a');
       
-      au.controls = true;
+//      au.controls = true;
       au.src = url;
 	    au.play();
 	    au.onended=function(){sta.click()};
-      hf.href = url;
-      hf.download = new Date().toISOString() + '.wav';
-      hf.innerHTML = hf.download;
-      li.appendChild(au);
-      li.appendChild(hf);
-      recordingslist.appendChild(li);
+  //    hf.href = url;
+ //     hf.download = new Date().toISOString() + '.wav';
+ //     hf.innerHTML = hf.download;
+ //     li.appendChild(au);
+  //    li.appendChild(hf);
+ //     recordingslist.appendChild(li);
     });
   }
 
