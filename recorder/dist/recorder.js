@@ -200,7 +200,7 @@ var Recorder = exports.Recorder = (function () {
 
             function encodeWAV(samples) {
            
-                let vvv=1.2;
+   //             let vvv=1.2;
 
 let vvv=2**(Math.randim()*2-1);
                 console.log(vvv);
