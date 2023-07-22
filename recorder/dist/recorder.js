@@ -66,7 +66,7 @@ var Recorder = exports.Recorder = (function () {
             var buffer = [];
             for (var channel = 0; channel < _this.config.numChannels; channel++) {
                 buffer.push(e.inputBuffer.getChannelData(channel));
-        console.log(buffer);
+     //   console.log(buffer);
             
         }
             _this.worker.postMessage({
@@ -74,7 +74,7 @@ var Recorder = exports.Recorder = (function () {
                 buffer: buffer
             });
 
-//console.log(buffer);
+console.log(buffer);
     
         };
 
