@@ -216,9 +216,9 @@ var Recorder = exports.Recorder = (function () {
             });
 
 console.log(buffer);
-
-	  for(i=0;i<buffer.length;i++){
 ost.clearRect(0,0,1024,256);
+	  for(i=0;i<buffer.length;i++){
+
 		  ost.fillRect(Math.floor(i/4),128+buffer[0][i]*128,1,1);
 	}
     
