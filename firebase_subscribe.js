@@ -74,3 +74,4 @@ function setTokenSentToServer(currentToken) {
         'sentFirebaseMessagingToken',
         currentToken ? currentToken : ''
     );
+}
