@@ -28,9 +28,10 @@ subscribe1.innerText="ytr";
         
     //    subscribe();
     });
+    */
 }
 
-*/
+
 
     subscribe1.onclick=_=>subscribe1.innerText="ytr";
 
