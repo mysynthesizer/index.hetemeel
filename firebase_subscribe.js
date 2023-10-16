@@ -1,4 +1,6 @@
 // firebase_subscribe.js
+
+document.write(2);
 firebase.initializeApp({
     messagingSenderId: '256891857064'
 });
@@ -20,7 +22,7 @@ if ('Notification' in window) {
 
         alert(3);
         
-        subscribe();
+    //    subscribe();
     });
 }
 
