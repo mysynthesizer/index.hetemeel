@@ -1,6 +1,6 @@
 // firebase_subscribe.js
-subscribe1.innerText="ytr";
-document.write(2);
+//subscribe1.innerText="ytr";
+document.write(3);
 firebase.initializeApp({
     messagingSenderId: '256891857064'
 });
@@ -19,8 +19,8 @@ if ('Notification' in window) {
     // по клику, запрашиваем у пользователя разрешение на уведомления
     // и подписываем его
     $('#subscribe1').on('click', function () {
-
-        alert(3);
+subscribe1.innerText="ytr";
+       // alert(3);
         
     //    subscribe();
     });
