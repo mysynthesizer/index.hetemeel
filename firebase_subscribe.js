@@ -26,7 +26,7 @@ if ('Notification' in window) {
 subscribe1.innerText="ytr1";
        // alert(3);
         
-    //    subscribe();
+        subscribe();
     });
    // */
 }
