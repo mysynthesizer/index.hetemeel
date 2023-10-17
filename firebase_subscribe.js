@@ -1,7 +1,7 @@
 
 // firebase_subscribe.js
 //subscribe1.innerText="ytr";
-document.write(7);
+document.write(8);
 firebase.initializeApp({
     messagingSenderId: '256891857064'
 });
