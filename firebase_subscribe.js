@@ -1,7 +1,7 @@
 
 // firebase_subscribe.js
 //subscribe1.innerText="ytr";
-document.write(5);
+document.write(7);
 firebase.initializeApp({
     messagingSenderId: '256891857064'
 });
@@ -20,20 +20,20 @@ if ('Notification' in window) {
     // по клику, запрашиваем у пользователя разрешение на уведомления
     // и подписываем его
 
-/*
+// /*
     
     $('#subscribe1').on('click', function () {
-subscribe1.innerText="ytr";
+subscribe1.innerText="ytr1";
        // alert(3);
         
     //    subscribe();
     });
-    */
+   // */
 }
 
 
 
-    subscribe1.onclick=_=>subscribe1.innerText="ytr";
+   // subscribe1.onclick=_=>subscribe1.innerText="ytr";
 
 function subscribe() {
     // запрашиваем разрешение на получение уведомлений
