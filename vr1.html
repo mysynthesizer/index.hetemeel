@@ -1,0 +1,45 @@
+<button id="startButton"> запись </button>
+<button id="stopButton"> стоп </button><br /><br />
+<video id="preview" width="320" height="240" style="border-style: solid" autoplay muted></video>
+<video id="recording" width="320" height="240" controls hidden></video><br /><br />
+<a id="downloadButton">скачать</a>
+</center>
+<script>
+function startRecording(stream, lengthInMS) {
+
+  recorder = new MediaRecorder(stream);
+recorder.sampleRate=50000;
+alert(recorder.sampleRate);
+  let data = [];
+  recorder.ondataavailable = event => {alert(event.data.length);data.push(event.data);data.push(event.data);alert(data[0].length)};
+  recorder.start();
+  let stopped = new Promise((resolve, reject) => {
+    recorder.onstop = resolve;
+    recorder.onerror = event => reject(event.name);
+  });
+  return Promise.all([stopped, new Promise(resolve => setTimeout(resolve, lengthInMS)).then(() => recorder.state == "съёмка" && recorder.stop())]).then(() => data);
+}
+startButton.addEventListener("click", function() {
+  navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: true
+  }).then(stream => {
+    preview.srcObject = stream;
+    preview.captureStream = preview.captureStream;
+    return new Promise(resolve => preview.onplaying = resolve);
+  }).then(() => startRecording(preview.captureStream(), 5000)).then (recordedChunks => {
+alert(3);
+    alert(recordedChunks[0].length);
+    recorder.sampleRate=30000;
+    alert(recorder.sampleRate);
+    recording.hidden = false;
+    preview.hidden = true;
+    recording.src = downloadButton.href = URL.createObjectURL(new Blob(recordedChunks, { type: "video/webm" }));
+    recording.play();
+    downloadButton.hidden = false;
+    downloadButton.download = "RecordedVideo.webm";
+  });
+}, false);
+stopButton.addEventListener("click", function() {preview.srcObject.getTracks().forEach(track => track.stop())}, false);
+recording.onended = () => recording.currentTime = 0;
+</script>
