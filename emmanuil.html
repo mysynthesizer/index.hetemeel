@@ -1,0 +1,740 @@
+<html>
+<head>
+    <title>Радіо Еммануїл</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="height=device-height,width=device-width, user-scalable=no, initial-scale=1">
+    <style>
+	
+	
+	
+	*{
+//  margin: 0; padding: 0; box-sizing: border-box;
+  perspective-origin: center;
+  transform-style: preserve-3d;
+}
+	
+    body{
+		background: #003;
+        font-family: arial;
+		
+		perspective: 100vh; 
+		
+	//	color: 
+    }
+	canvas{
+		 background: blue;
+	//	 width: 1024px;
+	}
+	#myh3{
+		color: #bfb;
+	}
+    button{
+        width: 150px;
+        border-radius: 7px;
+		
+	//	background: #033;
+		
+		background: linear-gradient(#033, #099);
+		
+        color: white;
+		transition: 0.5s;
+    }
+    button:hover{
+        background: linear-gradient(#099, #033);
+        color: gold;
+        cursor: pointer;
+		transition: 0.5s;
+    }
+    hr{
+        width: 80%;
+    }
+    #myhistory{
+        width: 50%;
+        background: black;
+        color: white;
+        text-align: left;
+        padding: 10px;
+		border-style: solid;
+		border-width: 1px;
+		border-color: #0ff;
+		transition: 0.5s;
+    }
+	#myhistory:hover{
+		border-color: #f0f;
+		transition: 0.5s;
+	}
+    .mytime{
+        background: black;
+        color: #ccc;
+    }
+    .now_live{
+        background: black;
+        color: gold;
+        width: 100%;
+		transition: 1s;
+		animation: zzzzz 3s linear 1;
+    }
+    .nov_live{
+        background: black;
+        color: gold;
+        width: 100%;
+		transition: 1s;
+		animation: zzzzzzz 3s linear 1;
+    }
+    #mes1{
+        background: #444;
+        padding: 5px;
+        width: 98%;
+        display: block;
+        border-radius: 5px;
+		text-align: center;
+    }
+    #mes2{
+        background: #444;
+        padding: 5px;
+        width: 98%;
+        display: none;
+        border-radius: 5px;
+		text-align: center;
+    }
+	#myCanvas{
+		border-width: 3px;
+		border-color: white;
+		border-radius: 15px;
+		border-style: solid;
+		box-shadow: 0 0 15px 15px #7e7;
+		animation: spin-counter 5s linear infinite;
+	}
+		
+	@keyframes spin-counter {
+	from{
+		box-shadow: 0 0 5px 5px #7e7;
+		border-color: white;
+	//	box-shadow: 0 0 15px 15px red;
+	}
+	to{
+		box-shadow: 0 0 15px 15px pink;
+		border-color: gold;
+	//	box-shadow: 0 0 15px 15px pink;
+	}
+	}
+	#mes1 mes2{
+		text-align: center;
+	}
+	@media screen and (max-width: 600px) {
+		#myhistory{
+			width: 85%;
+		}
+	}
+	
+	
+.myimg{
+	width: 400px;
+	height: 300px;
+	background-image: url("1.jpg");
+	border: red solid;
+	
+//	transform: translateZ(-3000px);
+	
+	animation: spincounter 20s linear infinite;
+	
+}
+
+@keyframes zzzzz {
+
+	from{
+		color: black;
+	}
+	
+	to{
+		color: gold;
+	}
+	
+}
+
+@keyframes zzzzzzz {
+
+	from{
+		color: gold;
+	}
+	
+	to{
+		color: black;
+	}
+	
+}
+
+@keyframes spincounter {
+
+	from{
+		background-image: url("img/1.jpg");
+	}
+	
+		
+	20%{
+		background-image: url("img/1.jpg");
+	}	
+		
+	30%{
+		background-image: url("img/2.jpg");
+	}
+	
+	
+	45%{
+		background-image: url("img/2.jpg");
+	}
+	
+	55%{
+		background-image: url("img/3.jpg");
+	}
+	
+	
+	70%{
+		background-image: url("img/3.jpg");
+	}
+	
+	80%{
+		background-image: url("img/4.jpg");
+	}
+	
+	
+	95%{
+		background-image: url("img/4.jpg");
+	}
+	
+	to{
+		background-image: url("img/1.jpg");
+	}
+	
+}	
+
+@media screen and (max-width: 600px) {
+	.myimg{
+		width: 324px;
+		height: 243px;
+	}
+}
+
+	
+    </style>
+</head>
+<body><center><h3 id=myh3>Х р и с т и я н с ь к е&nbsp;&nbsp;&nbsp;р а д і о<br />Э М М А Н У Ї Л</h3>
+<canvas id="myCanvas" height=128></canvas><br /><br />
+<button id=myplay onclick="listen()">Слухати</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button id=to onclick="turn_off()">Вимкнути</button><hr>
+<div id=myhistory>
+    <span id=mes1> Зараз в эфірі: </span><br><span id=my_time class=mytime> время </span><span id=trewq><span id=nowlive class=now_live> почекайте ... </span></span><br><br>
+    <span id=mes2> Раніше звучали: <br></span><br>
+    <span id=zxzxz><table id=mytable border=0 cellspacing=0></table></span>
+</div>
+<br />
+
+<div id=myimg class=myimg></div>
+<!--audio src="hristian2/Коли Дух Господній наповняє мене" controls></audio-->
+
+<br />
+</center></body>
+<script>
+let zakaz = 0;
+let zastavka = true;
+let zcounter = 1;
+let ct = 0;
+
+let ro = true;
+
+/*
+
+const au = new Audio();
+const tracks = "<?=$mytracks; ?>".substring(5).split("&");
+alert(tracks[3]);
+const mas = [];
+let index = 0;
+let sum = 0;
+function rty(){
+	au.src = "sounds/" + tracks[index];
+	index ++;
+	au.onloadeddata = function(){
+		mas.push(this.duration);
+		sum += this.duration;
+		if (index < tracks.length){
+			rty();
+		}else{
+			alert(mas);
+			alert(sum);
+		}
+	}
+}
+
+rty();
+
+*/
+
+let radio = false;
+
+let ii, dd;
+
+var canvas = document.getElementById('myCanvas');
+
+if(screen.width < 600){
+	canvas.width = screen.width - 50;
+}else if(screen.width < 1000){
+	canvas.width = 512;
+}else{
+	canvas.width = 1024;
+	canvas.height = 256;
+}
+
+window.onresize =_=> {
+	
+	if(screen.width < 600){
+		canvas.width = screen.width - 50;
+	}else if(screen.width < 1000){
+		canvas.width = 512;
+	}else{
+		canvas.width = 1024;
+		canvas.height = 256;
+	}
+	
+}
+
+const lengths = "<?=$out; ?>".substring(0, "<?=$out; ?>".length - 2).split(", ");
+const titles = "<?=$out1; ?>".substring(0, "<?=$out1; ?>".length - 1).split("&");
+
+//alert(titles);
+
+const mylengths = [];
+let td = 0;
+
+for(i = 0; i < lengths.length; i ++){
+	
+	mylengths.push(parseFloat(lengths[i]));
+	td += parseFloat(lengths[i]);
+	
+}
+
+//alert(td);
+
+//alert(mylengths);
+
+var audio = new Audio();
+//let au = new Audio("radio1_1.mp3");
+//au.volume = 0.6;
+//audio.controls = true;
+//document.body.append(audio);
+//audio.onplay = function(){
+	
+//	console.log(3);
+//	console.log(new Date().getTime() - ct);
+//	this.currentTime = curTime + (new Date().getTime() - ct) / 1000;
+	
+//}
+
+audio.onloadeddata = function(){
+	
+	myplay.innerText = "буферизація ...";
+	
+//	console.log(new Date().getTime() - ct);
+//	this.currentTime = curTime + (new Date().getTime() - ct) / 1000;
+	
+}
+
+audio.onloadedmetadata = function(){
+	
+	myplay.innerText = "Майже готово.";
+	
+//	console.log(new Date().getTime() - ct);
+//	this.currentTime = curTime + (new Date().getTime() - ct) / 1000;
+	
+}
+
+audio.onplay = function(){
+	
+	myplay.innerText = "Чекайте ...";
+	
+//	console.log(new Date().getTime() - ct);
+//	this.currentTime = curTime + (new Date().getTime() - ct) / 1000;
+	
+	audioCtx = new AudioContext();
+	var source = audioCtx.createMediaElementSource(audio);
+	var analyser = audioCtx.createAnalyser();
+		source.connect(analyser); // Подключаем анализатор к элементу audio
+		analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
+	var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+	var ctx = canvas.getContext('2d');
+	var counter = 0;
+	reklama = false;
+	
+	setInterval(function(){
+		
+		analyser.getByteFrequencyData(frequencyData); // Записываем в массив данные уровней частот
+		ctx.fillStyle = "black"; // Задаём цвет фона
+		ctx.globalAlpha = 0.05; // Это для получения эффекта плавного погасания полос
+		ctx.fillRect (0, 0, canvas.width, canvas.height); // Полупрозрачно чистим экран
+		ctx.fillStyle = "gold"; // Задаём цвет полос
+		ctx.globalAlpha = 1;
+		
+		for(i = 0; i < canvas.width; i ++){
+			
+			ii = Math.floor(i / canvas.width * 1024);
+			dd = frequencyData[ii] / 256 * canvas.height;
+			
+			ctx.fillStyle = "rgb(" + (128 + 128 * Math.sin((ii + 200 / canvas.width * 1024) / 43)) + ", " + (128 + 128 * Math.sin(ii / 73)) + ", " + (128 + 128 * Math.sin(ii / 35)) + ")";
+			ctx.fillRect(i, canvas.height - dd - 1, 1, dd); // рисуем полосу
+	
+		}
+		
+		counter ++;
+		
+	}, 20);
+	
+}
+
+//    audioCat = "http://tolmatux.strana.de/audio/", // Путь к папке, где лежат МП3-файлы, если они в отдельной папке
+//  audioCat = ""; // В противном случае присваиваем пустую строку
+
+ audioCat = "p50/";
+
+ //   mp3 = [
+//		["pla", "dor", "pri", "sny", "nado", "nadodance", "simpho", "sol", "etaj", "organ", "rad", "buch", "otzvuk", "segid", "vzryv", "dance", "triumph", "sud", "odnii", "labirint", "vospo", "dlalekcii", "razminka", "polet", "uvertur"],
+//		["Горячая планета", "Дорога к звёздам", "Мелодия для пришельцев из Космоса", "Симфония моих снов", "Надо же такому присниться", "Надо же такому присниться - 2", "Симфния Космоса", "Соло для старого компьютера", "Выбери этаж", "Старый орган", "Сессия верховной рады", "Дискозаставка", "Отзвук восьмидесятых", "Сегидилья (ремикс)", "Первичный взрыв Вселенной", "Танец элементарных частиц", "Триумфальная заставка", "Суд над таксистом", "Одни ли мы в Космосе?", "Лабиринт", "Воспоминание о далёкой галактике", "Для озвучки лекций", "Техновальс", "Полёт спутника", "Гимн нашей галактики"],
+  //      [260, 270, 323, 375, 236, 221, 184, 187, 221, 305, 270, 82, 172, 307, 330, 265, 133, 187, 376, 181, 338, 161, 193, 239, 307] // Длительности треков
+ //   ],
+	
+   mp3 = [
+	//	"Відзвук восьмидесятих,Горяча планета,Гімн нашоі галактики,Дискозаставка,Для озвучки лекцій,Дорога до зірок,Лабіринт,Мелодія для прибульців з Космосу,Первісний вибух всесвіту,Політ супутника,Сегіділля (ремікс),Сесія верховноі ради,Симфонія Космосу,Симфонія моіх снів,Соло для старого комп'ютера,Спогади про далеку галактику,Старий орган,Техновальс,Треба ж такому приснитись,Треба ж такому приснитись (для дискотек),Тріумфальна заставка".split(","),
+	//	"Відзвук восьмидесятих,Горяча планета,Гімн нашоі галактики,Дискозаставка,Для озвучки лекцій,Дорога до зірок,Лабіринт,Мелодія для прибульців з Космосу,Первісний вибух всесвіту,Політ супутника,Сегіділля (ремікс),Сесія верховноі ради,Симфонія Космосу,Симфонія моіх снів,Соло для старого комп'ютера,Спогади про далеку галактику,Старий орган,Техновальс,Треба ж такому приснитись,Треба ж такому приснитись (для дискотек),Тріумфальна заставка".split(","),
+		titles,
+		titles,
+	//	[172.85545,260.294188,307.7973,82.494694,161.69175,270.086,181.7604,323.756375,210.1604,239.8329,307.363063,270.654694,184.9185,375.881375,187.87585,338.367275,305.825375,193.496,236.186375,221.2265,133.5047] // Длительности треков
+		mylengths
+    ],
+	
+    numTr = mp3[0].length, // Количество треков в плейлисте
+	a = 0;
+//	a = 206570, // Количество раз воспроизведения плейлиста с момента 1 января 1970 г. на момент публикации скрипта на сайте - рассчитать самостоятельно и прописать один раз и на постоянно в момент публикации скрипта на сайте
+	hst = [[], []], // История раннее прослушанного
+//	totalDuration = 4966029.1640000005, // Сумарная длительность в милисекундах всех треков в плейлисте - рассчитать самостоятельно
+	totalDuration = td * 1000,
+    mymax = 7; // Максимальное количество треков в истории раннее прослушанного
+
+function getTrack(){ // Получение данных о текущем воспроизводящемся треке, его временной позиции воспроизведения и времени начала воспроизведения
+    randArray = []; // Случайные номера треков
+    var tek = new Date().getTime();
+    var numCycles = Math.floor(tek / totalDuration); // Количество раз воспроизведения плейлиста с момента 1 января 1970 г.
+    var ind = 0;
+    for(i = 1; i < numTr + 1; i ++){
+        for(j = 0; j < numCycles - a; j ++){
+            ind ++;
+            if(ind == numTr) ind = 0;
+            while(randArray[ind]){
+                ind ++;
+                if(ind == numTr) ind = 0;
+            }
+        }
+        randArray[ind] = i;
+    }
+    var newCycle = numCycles * totalDuration; // Время начала нового цикла воспроизведения плейлиста
+    var mytime = (tek - newCycle) / 1000; // Временная позиция воспроизведения всего плейлиста
+    var s = 0;
+    turn = 0;
+    while(s < mytime){
+//		alert(randArray[turn] - 1);
+//		alert(mp3[2][randArray[turn] - 1]);
+		s += mp3[2][randArray[turn] - 1];
+        turn ++;
+    }
+    turn --;
+    index = randArray[turn] - 1; // Индекс (номер) текущего воспроизводимого трека
+    var s1 = s - mp3[2][index];
+    hour_min = hourmin(newCycle + s1 * 1000);
+    curTime = mytime - s1;
+	console.log(new Date().getTime());
+//	alert(randArray[turn]);
+}
+
+function listen(){ // Слушаем
+
+	myplay.innerText = "Зачекайте ...";
+	radio = true;
+    getTrack();
+    my_time.innerHTML = "&nbsp;" + hour_min + "&nbsp;&nbsp;&nbsp;";
+    nowlive.innerHTML = mp3[1][index];
+ 	ct = new Date().getTime();
+	
+	audio.src = audioCat + mp3[0][index];
+	
+//	audio.src = audioCat + "Лине пісня про Ісуса";
+	
+    audio.currentTime = curTime;
+//	audio.volume = 0.3;
+//	console.log(new Date().getTime());
+    audio.play();
+	
+}
+
+function turn_off(){ // Выключим
+
+	to.innerText = "Зупинення ...";
+	radio = false;
+    myplay.disabled = true;
+    var myInterval = setInterval(function(){
+        audio.volume -= 0.03;
+        if(audio.volume <= 0.02){
+            clearInterval(myInterval);
+            audio.pause();
+            myplay.disabled = false;
+			myplay.innerText = "Слухати";
+			to.innerText = "Вимкнути";
+        }
+    }, 100);
+	audioCtx.close();
+	
+}
+
+//ochered();
+
+audio.onended = function(){ // Переход на следующий трек
+
+	zcounter --;
+
+	if(zcounter <= 0){
+		
+		zastavka = false;
+		zcounter = 4;
+	
+	//	audio.src = "hristian2/Заставка";
+		
+	//	audio.src = "vysluhaete.mp3";
+	
+		if(ro == true){
+			
+			ro = false;
+			audio.src = "hristian2/Заставка";
+			
+		}else{
+			
+			ro = true;
+			audio.src = "vysluhaete1.mp3";
+			
+		}
+		
+		audio.play();
+		
+	}else{
+		
+		audio.volume = 0;
+		
+		let MyLiebeInterval = setInterval(function(){
+			
+			audio.volume += 0.01;
+			
+			if(audio.volume >= 1 - 0.02){
+				
+				clearInterval(MyLiebeInterval);
+	//			alert(3);
+				
+			}
+			
+		}, 100);
+
+		async function ochered(){
+	
+			const response = await fetch("isochered.php?zakaz=" + zakaz);
+			const result = await response.text();
+	//	alert(result);
+		
+			if(result == "pusto"){
+			
+				zakaz = 0;
+				reklama = true;
+				mes2.style.display = "block";
+			
+				if(hst[0].length >= mymax){
+				
+					hst[0].shift();
+					hst[1].shift();
+				
+				}
+			
+				hst[0].push(hour_min);
+				hst[1].push(mp3[1][index]);
+			
+				mytable.innerHTML = "";
+	
+	//			mytable.remove();
+	//			let mytable = document.createElement("table");
+	//			zxzxz.append(mytable);
+			
+				for(j = 0; j < hst[0].length; j ++){
+				
+					var mytr = document.createElement("tr");
+					
+					var mytd = document.createElement("td");
+					mytd.className = "mytime";
+					mytd.innerHTML = "&nbsp;" + hst[0][hst[0].length - 1 - j] + "&nbsp;&nbsp;&nbsp;";
+					mytr.appendChild(mytd);
+				
+					var mytd = document.createElement("td");
+					mytd.className = "nov_live";
+					mytd.innerHTML = hst[1][hst[0].length - 1 - j];
+					
+					mytd.id = "now_table";
+					
+					mytr.appendChild(mytd);
+					
+					mytable.appendChild(mytr);
+				
+				}
+			
+				getTrack();
+				
+				audio.src = audioCat + mp3[0][index];
+				
+		//		audio.src = audioCat + "Лине пісня про Ісуса";
+				
+				audio.currentTime = curTime;
+				
+		//		audio.play();
+		
+		//		trewq.innerHTML = "";
+		
+				nowlive.className = "nov_live";
+				
+				setTimeout(function(){
+					
+					audio.play();
+					
+		//			let nowlive = document.createElement("span");
+		
+					nowlive.className = now_table.className = "now_live";
+					nowlive.innerHTML = mp3[1][index];
+					
+		//			trewq.append(nowlive);
+					
+				}, 1000);
+				
+				my_time.innerHTML = "&nbsp;" + hourmin() + "&nbsp;&nbsp;&nbsp;";
+				
+	//			nowlive.innerHTML = mp3[1][index];
+				
+	//			nowlive.remove();
+				
+	//			trewq.innerHTML = "";
+				/*
+				setTimeout(function(){
+				
+					let nowlive = document.createElement("span");
+	//				nl.id = "nowlive";
+					nowlive.className = "now_live";
+					nowlive.innerHTML = mp3[1][index];
+					trewq.append(nowlive);
+				
+				}, 1000);
+*/
+			}else{
+			
+				zakaz = 1;
+			
+				audio.src = "ochered/" + result;
+				audio.play();
+				my_time.innerHTML = "&nbsp;" + hourmin() + "&nbsp;&nbsp;&nbsp;";
+	//			nowlive.innerHTML = result;
+	//			nowlive.innerHTML = result.split("&")[1];
+			
+			}
+		
+		}
+
+		ochered();
+	
+	}
+
+}
+
+function hourmin(e){
+    var newDate = new Date();
+    if(e)newDate.setTime(e);
+    var ndArray = newDate.toLocaleTimeString().split(":");
+    return ndArray[0] + ":" + ndArray[1];
+}
+
+function myshow(){
+	
+	getTrack();
+	
+	my_time.innerHTML = "&nbsp;" + hour_min + "&nbsp;&nbsp;&nbsp;";
+	nowlive.innerHTML = mp3[1][index];
+	
+//	if (radio == false) setTimeout(myshow, (mp3[2][index] - curTime + 3) * 1000);
+	
+}
+
+myshow();
+
+console.log(mp3[1][index]);
+
+audio.onplaying = function(){
+	
+	myplay.innerText = "Слухаємо";
+	myCanvas.style = "animation: spin-counter 15s linear infinite;"
+	
+};
+	
+audio.onpause = function(){
+	
+	myCanvas.style = "animation: spin-counter 3s linear infinite;";
+	
+	setTimeout(function(){
+		
+		this.play();
+		
+	}, 1000);
+	
+};
+/*
+audio.ontimeupdate = function(){
+	
+	if(this.currentTime >= 60 && reklama == true){
+		
+		reklama = false;
+		
+		let bb = setInterval(function(){
+			
+			audio.volume -= 0.02;
+			
+			if(audio.volume <= 0.3){
+				
+				clearInterval(bb);
+				au.currentTime = 0;
+				au.play();
+			
+			}
+	
+		}, 100);
+		
+		
+	}
+	
+}
+
+au.onended = function(){
+	let bb = setInterval(function(){
+		audio.volume += 0.02;
+		if(audio.volume >= 1)clearInterval(bb);
+	}, 100);
+}
+*/
+//alert("<?=$out; ?>");
+//alert("<?=$out; ?>".substring(0, "<?=$out; ?>".length - 2).split(", "));
+
+document.ondblclick =_=> {
+	
+	nowlive.remove();
+	let nl = document.createElement("span");
+	nl.className = "now_live";
+	nl.innerText = "rty";
+	trewq.append(nl);
+	
+}
+
+</script>
+</html>
