@@ -1,0 +1,51 @@
+<canvas id=canvas></canvas>
+<ul class="playlist"> 
+    <li>Sound1</li>
+	<li>Sound2</li>
+	<li>Sound3</li>
+</ul>
+<script>
+var audio = new Audio();
+audio.src = "stekla.mp3";
+audio.controls = true;
+document.body.append(audio);
+const ctx = document.querySelector("canvas").getContext("2d");
+ctx.fillRect(15, 15, 15, 15);
+const rty = document.querySelector("li");
+console.log(rty.innerText);
+const audioCtx = new AudioContext();
+var source = audioCtx.createMediaElementSource(audio);
+var analyser = audioCtx.createAnalyser();
+source.connect(analyser); // Подключаем анализатор к элементу audio
+analyser.connect(audioCtx.destination); // Без этой строки нет звука, но анализатор работает.
+var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+var counter = 0;
+
+audio.onplay =_=> {
+
+	setInterval(function(){
+		
+		analyser.getByteFrequencyData(frequencyData); // Записываем в массив данные уровней частот
+		ctx.fillStyle = "black"; // Задаём цвет фона
+		ctx.globalAlpha = 0.05; // Это для получения эффекта плавного погасания полос
+		ctx.fillRect (0, 0, canvas.width, canvas.height); // Полупрозрачно чистим экран
+		ctx.fillStyle = "gold"; // Задаём цвет полос
+		ctx.globalAlpha = 1;
+		
+		for(i = 0; i < canvas.width; i ++){
+			
+			ii = Math.floor(i / canvas.width * 1024);
+			dd = frequencyData[ii] / 256 * canvas.height;
+			
+			ctx.fillStyle = "rgb(" + (128 + 128 * Math.sin((ii + 200 / canvas.width * 1024) / 43)) + ", " + (128 + 128 * Math.sin(ii / 73)) + ", " + (128 + 128 * Math.sin(ii / 35)) + ")";
+			ctx.fillRect(i, canvas.height - dd - 1, 1, dd); // рисуем полосу
+	
+		}
+		
+		counter ++;
+		
+	}, 100);
+	
+}
+
+</script>
