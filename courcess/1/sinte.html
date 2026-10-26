@@ -203,9 +203,9 @@ hr {
  <button id=b> старт записи </button><script>for(i=0;i<3;i++) document.write("&nbsp;");</script>
  <audio id=audio controls></audio><script>for(i=0;i<3;i++) document.write("&nbsp;");</script>
  <a id=mya> скачать </a><br /><br /><hr />
- <audio id=perc0 src="../autoakk/bas.mp3"></audio>
- <audio id=perc1 src="../autoakk/rab.mp3"></audio>
- <audio id=perc2 src="../autoakk/het.mp3"></audio><br />
+ <audio id=perc0 src="bas.mp3"></audio>
+ <audio id=perc1 src="rab.mp3"></audio>
+ <audio id=perc2 src="het.mp3"></audio><br />
  <button id=aut onclick="autoAkk()"> автоаккомпанимент </button><input id=importieren style="display: none" />
  <button onclick="importSettings(1)" style="display: none"> 1 </button>
  <button onclick="importSettings(2)" style="display: none"> 2 </button>
@@ -837,9 +837,9 @@ myquitar3.setPeriodicWave(quitars);
 
 async function loadAudio(){
 
-	let fetchbas = await fetch("../autoakk/bas.mp3");
-	let fetchrab = await fetch("../autoakk/rab.mp3");
-	let fetchhet = await fetch("../autoakk/het.mp3");
+	let fetchbas = await fetch("bas.mp3");
+	let fetchrab = await fetch("rab.mp3");
+	let fetchhet = await fetch("het.mp3");
 
 	bufferbas = await ctx.decodeAudioData(await fetchbas.arrayBuffer());
 	bufferrab = await ctx.decodeAudioData(await fetchrab.arrayBuffer());
